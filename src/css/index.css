@@ -1,0 +1,21 @@
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+header {
+  padding-bottom:25px;
+}
+
+.feat {
+  max-height: 500px;
+}
+
+.content {
+  margin-right:175px;
+}
