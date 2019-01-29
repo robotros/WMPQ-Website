@@ -4,10 +4,10 @@ import ReactDOMServer from 'react-dom/server';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {faBars, faTree, faMapMarked, faWifi, faLeaf, faPaintBrush} from '@fortawesome/free-solid-svg-icons';
 import * as TwitchAPI from './components/TwitchAPI';
-import Header from './components/Header';
+import Head from './components/Head';
 import Featured from './components/Featured';
-import Hamburger from './components/Hamburger';
-import Shelf from './components/Shelf';
+import OtherStreams from './components/OtherStreams';
+import Foot from './components/Foot';
 import './css/App.css';
 
 // font awesome icon library
