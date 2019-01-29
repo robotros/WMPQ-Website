@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 * React Component to Render footer for WMPQ Gaming
 * @author [Aron Roberts](https://github.com/robotros)
 */
-class Footer extends Component {
+class Foot extends Component {
   /**
   * Render Component into html
   * @return {Component} html
@@ -22,4 +22,4 @@ class Footer extends Component {
   }
 }
 
-export default Footer;
+export default Foot;
