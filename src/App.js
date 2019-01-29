@@ -33,13 +33,60 @@ class WMPQApp extends React.Component {
     ],
     streamer_details: [],
     live_streams: [],
+    active_stream: {},
+    related_streams: [],
+    default_stream: 'robotros',
+  }
+
+  /**
+  * embed a twitch stream
+  * @param {string} channel : name of channel to embed
+  */
+  embedTwitch = (channel) => {
+    new Twitch.Embed('twitch-embed', {
+      width: 854,
+      height: 480,
+      channel: channel,
+      theme: 'dark',
+    });
+  }
+
+  /**
+  * Select a random Live stream and embed it.
+  */
+  setActiveStream() {
+    let stream = this.state.default_stream;
+    let live = this.state.live_streams;
+    (live.length < 1) ? stream = 'robotros' :
+      stream = live[Math.floor(Math.random() * live.length)].user_name;
+    this.setState({active_stream: stream});
+    this.embedTwitch(stream.user_name);
+  }
+
+  /**
+  * Select related streams to feature
+  */
+  setRelatedStreams() {
+    let related = [];
+    let streamers = this.state.streamer_details;
+    let i = streamers.length > 3 ? 0 :
+      streamers.length > 0 ? 4-streamers.length : 4;
+    while (i < 4) {
+      let stream = streamers[Math.floor(Math.random()* streamers.length)];
+      if (related.filter((e) => e.id === stream.id).length < 1) {
+        related.push(stream);
+        i++;
+      }
+    }
+
+    this.setState({related_streams: related});
   }
 
   /**
   * Make TwitchAPI call to get streamer information
   */
-  getStreamerDetails() {
-    TwitchAPI.getChannels(this.state.wmpq_streams)
+  async getStreamerDetails() {
+    await TwitchAPI.getChannels(this.state.wmpq_streams)
         .then((data) => {
           this.setState({streamer_details: data.data});
         });
@@ -48,8 +95,8 @@ class WMPQApp extends React.Component {
   /**
   * Make TwitchAPI call to get Live streamers
   */
-  getLiveStreams() {
-    TwitchAPI.getLive(this.state.streamer_details)
+  async getLiveStreams() {
+    await TwitchAPI.getLive(this.state.streamer_details)
         .then((data) => {
           this.setState({live_streams: data.data});
         });
@@ -60,6 +107,9 @@ class WMPQApp extends React.Component {
   */
   componentDidMount() {
     this.getStreamerDetails();
+    this.getLiveStreams();
+    this.setActiveStream();
+    this.setRelatedStreams();
   }
 
   /**
@@ -73,11 +123,11 @@ class WMPQApp extends React.Component {
           <div className='WMPQ-App'>
             <Head />
             <Featured
-              live={this.state.live_streams}
+              active={this.state.active_stream}
               details={this.state.streamer_details}
             />
             <OtherStreams
-              details={this.state.streamer_details}
+              details={this.state.related_streams}
             />
             <Foot />
           </div>
