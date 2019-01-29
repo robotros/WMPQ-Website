@@ -77,3 +77,4 @@ typings/
 
 # API keys
 src/componets/API_CLIENT_ID.js
+src/components/API_CLIENT_ID.js
