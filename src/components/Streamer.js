@@ -15,14 +15,16 @@ class Streamer extends Component {
   render() {
     const detail = this.props.detail;
     let url = 'https://www.twitch.tv/'+detail.login;
-    // console.log(details);
+    let image = (detail.offline_image_url=="") ? this.props.default_image :
+      detail.offline_image_url;
+    console.log(detail);
 
     return (
       <div className='col-md-3 col-sm-6 mb-4'>
         <h4 >{detail.display_name}</h4>
         <a href={url}>
           <img className='img-fluid feat'
-            src={detail.offline_image-url}
+            src={image}
             alt={detail.display_name}></img>
         </a>
       </div>
@@ -32,8 +34,7 @@ class Streamer extends Component {
 
 Streamer.propTypes = {
   detail: PropTypes.object.isRequired,
-  key: PropTypes.string,
+  default_image: PropTypes.string.isRequired,
 };
-
 
 export default Streamer;

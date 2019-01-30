@@ -6,7 +6,7 @@ const client = '1qdqw5gt896kmm2mqngp3mepzxod1e';
 const request = {
   method: 'GET',
   headers: {
-    'Client-ID': client,
+    'client-id': client,
   },
 };
 
@@ -19,7 +19,8 @@ export const getChannels = (list) => {
     (i === 0) ? query = query + name :
       query = query + '&login='+name;
   });
-  fetch(`${api}users?login=${query}`, request)
+  query = api+'users?login='+query;
+  return fetch(query, request)
       .then((res) => res.json());
 };
 
@@ -32,6 +33,7 @@ export const getLive = (list) => {
     (i === 0) ? query = query + channel.id :
       query = query + '&user_id=' + channel.id;
   });
-  fetch(`${api}streams?user_id=${query}`, request)
+  query = api+'streams?user_id='+query;
+  return fetch(query, request)
       .then((res) => res.json());
 };

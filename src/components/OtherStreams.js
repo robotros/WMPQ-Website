@@ -19,7 +19,9 @@ class OtherStreams extends Component {
           {this.props.details.map((stream) =>
             <Streamer
               key={stream.id}
-              detail={stream}/>)}
+              detail={stream}
+              default_image={this.props.default_image}
+            />)}
         </div>
       </div>
     );
@@ -28,6 +30,7 @@ class OtherStreams extends Component {
 
 OtherStreams.propTypes = {
   details: PropTypes.array.isRequired,
+  default_image: PropTypes.string.isRequired,
 };
 
 export default OtherStreams;

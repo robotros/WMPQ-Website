@@ -5,7 +5,6 @@ import {library} from '@fortawesome/fontawesome-svg-core';
 import {faBars, faTree, faMapMarked, faWifi, faLeaf, faPaintBrush} from '@fortawesome/free-solid-svg-icons';
 import * as TwitchAPI from './components/TwitchAPI';
 import Head from './components/Head';
-//import Twitch from './components/Twitch';
 import Featured from './components/Featured';
 import OtherStreams from './components/OtherStreams';
 import Foot from './components/Foot';
@@ -14,7 +13,7 @@ import './css/app.css';
 // font awesome icon library
 library.add(faBars, faTree, faMapMarked, faWifi, faLeaf, faPaintBrush);
 
-//setup Twitch
+// setup Twitch
 const Twitch = window.Twitch;
 
 /**
@@ -37,14 +36,15 @@ class WMPQApp extends React.Component {
     ],
     streamer_details: [],
     live_streams: [],
-    active_stream: {},
+    active_stream: '',
     related_streams: [],
     default_stream: 'robotros',
+    default_image: 'http://placehold.it/500x300',
   }
 
   /**
   * embed a twitch stream
-  * @param {string} channel : name of channel to embed
+  * @param {string} user : name of user to embed
   */
   embedTwitch = (user) => {
     new Twitch.Embed('twitch-embed', {
@@ -61,9 +61,9 @@ class WMPQApp extends React.Component {
   setActiveStream() {
     let stream = this.state.default_stream;
     let live = this.state.live_streams;
-    (live.length < 1) ? stream = 'robotros' :
+    (live.length < 1) ? stream = this.state.default_stream :
       stream = live[Math.floor(Math.random() * live.length)].user_name;
-    this.setState({active_stream: stream});
+    this.setState({active_stream: stream}, this.setRelatedStreams);
     this.embedTwitch(stream);
   }
 
@@ -91,8 +91,8 @@ class WMPQApp extends React.Component {
   */
   async getStreamerDetails() {
     await TwitchAPI.getChannels(this.state.wmpq_streams)
-        .then((data) => {
-          this.setState({streamer_details: data.data});
+        .then( (data) => {
+          this.setState({streamer_details: data.data}, this.getLiveStreams);
         });
   }
 
@@ -101,8 +101,8 @@ class WMPQApp extends React.Component {
   */
   async getLiveStreams() {
     await TwitchAPI.getLive(this.state.streamer_details)
-        .then((data) => {
-          this.setState({live_streams: data.data});
+        .then(async (data) => {
+          await this.setState({live_streams: data.data}, this.setActiveStream);
         });
   }
 
@@ -111,9 +111,6 @@ class WMPQApp extends React.Component {
   */
   componentDidMount() {
     this.getStreamerDetails();
-    this.getLiveStreams();
-    this.setActiveStream();
-    this.setRelatedStreams();
   }
 
   /**
@@ -128,10 +125,11 @@ class WMPQApp extends React.Component {
             <Head />
             <Featured
               active={this.state.active_stream}
-              details={this.state.streamer_details.filter((channel) => channel.login === this.state.active_stream.user_name)}
+              details={this.state.streamer_details.filter((channel) => channel.login === this.state.active_stream)}
             />
             <OtherStreams
               details={this.state.related_streams}
+              default_image={this.state.default_image}
             />
             <Foot />
           </div>

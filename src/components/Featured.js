@@ -14,9 +14,9 @@ class Featured extends Component {
   */
   render() {
     return (
-      <div clasName='content'>
+      <div className='content'>
         <h1 className='my-4'>[WMPQ]
-          <small className='user_id'>{this.props.active.user_id}</small>
+          <small className='user_id'>{this.props.active}</small>
         </h1>
         <div className='row'>
           <FeatStream />
@@ -31,7 +31,7 @@ class Featured extends Component {
 
 Featured.propTypes = {
   details: PropTypes.array.isRequired,
-  active: PropTypes.object.isRequired,
+  active: PropTypes.string.isRequired,
 };
 
 export default Featured;
