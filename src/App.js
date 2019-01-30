@@ -49,7 +49,7 @@ class WMPQApp extends React.Component {
   * @param {string} user : name of user to embed
   */
   embedTwitch = (user) => {
-    if ( $(window).width() > 963) {
+    if ( $(window).width() > 850) {
       new Twitch.Embed('twitch-embed', {
         width: 854,
         height: 480,
@@ -58,7 +58,7 @@ class WMPQApp extends React.Component {
       });
     } else {
       new Twitch.Embed('twitch-embed', {
-        width: 854,
+        width: $(window).width()-20,
         height: 480,
         channel: user,
         theme: 'dark',
