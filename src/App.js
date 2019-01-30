@@ -5,7 +5,7 @@ import {library} from '@fortawesome/fontawesome-svg-core';
 import {faBars, faTree, faMapMarked, faWifi, faLeaf, faPaintBrush} from '@fortawesome/free-solid-svg-icons';
 import * as TwitchAPI from './components/TwitchAPI';
 import Head from './components/Head';
-import Twitch from './components/Twitch';
+//import Twitch from './components/Twitch';
 import Featured from './components/Featured';
 import OtherStreams from './components/OtherStreams';
 import Foot from './components/Foot';
@@ -13,6 +13,9 @@ import './css/app.css';
 
 // font awesome icon library
 library.add(faBars, faTree, faMapMarked, faWifi, faLeaf, faPaintBrush);
+
+//setup Twitch
+const Twitch = window.Twitch;
 
 /**
 * React Component to Render WMPQ.org Website
@@ -43,11 +46,11 @@ class WMPQApp extends React.Component {
   * embed a twitch stream
   * @param {string} channel : name of channel to embed
   */
-  embedTwitch = (channel) => {
+  embedTwitch = (user) => {
     new Twitch.Embed('twitch-embed', {
       width: 854,
       height: 480,
-      channel: channel,
+      channel: user,
       theme: 'dark',
     });
   }
@@ -61,7 +64,7 @@ class WMPQApp extends React.Component {
     (live.length < 1) ? stream = 'robotros' :
       stream = live[Math.floor(Math.random() * live.length)].user_name;
     this.setState({active_stream: stream});
-    this.embedTwitch(stream.user_name);
+    this.embedTwitch(stream);
   }
 
   /**
@@ -125,7 +128,7 @@ class WMPQApp extends React.Component {
             <Head />
             <Featured
               active={this.state.active_stream}
-              details={this.state.streamer_details.filter((channel) => channel.login == this.state.active_stream.user_name)}
+              details={this.state.streamer_details.filter((channel) => channel.login === this.state.active_stream.user_name)}
             />
             <OtherStreams
               details={this.state.related_streams}

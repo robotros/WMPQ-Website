@@ -16,7 +16,7 @@ const request = {
 export const getChannels = (list) => {
   let query='';
   list.forEach((name, i, arr) => {
-    (i == 0) ? query = query + name :
+    (i === 0) ? query = query + name :
       query = query + '&login='+name;
   });
   fetch(`${api}users?login=${query}`, request)
@@ -29,7 +29,7 @@ export const getChannels = (list) => {
 export const getLive = (list) => {
   let query='';
   list.forEach((channel, i, arr) => {
-    (i == 0) ? query = query + channel.id :
+    (i === 0) ? query = query + channel.id :
       query = query + '&user_id=' + channel.id;
   });
   fetch(`${api}streams?user_id=${query}`, request)

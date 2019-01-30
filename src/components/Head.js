@@ -15,7 +15,7 @@ class Head extends Component {
         <nav className='navbar navbar-expand-lg navbar-dark bg-dark fixed-top'>
           <div className='container'>
             <div className='navbar-brand'>
-              <img src='../img/WMPQ-gaming-logo-03_brand.png' alt='WMPQ'></img>
+              <img src='/img/WMPQ-gaming-logo-03_brand.png' alt='WMPQ'></img>
             </div>
             <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarResponsive' aria-controls='navbarResponsive' aria-expanded='false' aria-label='Toggle navigation'>
               <span className='navbar-toggler-icon'></span>

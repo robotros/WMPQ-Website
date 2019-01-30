@@ -16,7 +16,7 @@ class Featured extends Component {
     return (
       <div clasName='content'>
         <h1 className='my-4'>[WMPQ]
-          <small className='user_id'>{this.props.active_stream.user_id}</small>
+          <small className='user_id'>{this.props.active.user_id}</small>
         </h1>
         <div className='row'>
           <FeatStream />
@@ -31,7 +31,7 @@ class Featured extends Component {
 
 Featured.propTypes = {
   details: PropTypes.array.isRequired,
-  active_stream: PropTypes.Object.isRequired,
+  active: PropTypes.object.isRequired,
 };
 
 export default Featured;
