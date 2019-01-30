@@ -16,7 +16,10 @@ class OtherStreams extends Component {
       <div className='related'>
         <h3 className='my-4'>Other Streamers</h3>
         <div className='row'>
-          <Streamer />
+          {this.props.details.map((stream) =>
+            <Streamer
+              key={stream.id}
+              detail={stream}/>)}
         </div>
       </div>
     );

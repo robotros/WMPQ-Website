@@ -9,33 +9,30 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 */
 class Streamer extends Component {
   /**
-  * Click event
-  */
-  locClick = () => {
-    this.props.onClick(this.props.details.location_name);
-  }
-  /**
   * Render Component into html
   * @return {Component} html
   */
   render() {
-    const details = this.props.details;
+    const detail = this.props.detail;
+    let url = 'https://www.twitch.tv/'+detail.login;
     // console.log(details);
 
     return (
       <div className='col-md-3 col-sm-6 mb-4'>
-        <h4 className='feat1'></h4>
-        <a id='stream_url_1' href=#>
-          <img className='img-fluid feat' id='profile_1_img' src='http://placehold.it/500x300' alt='Name'></img>
+        <h4 >{detail.display_name}</h4>
+        <a href={url}>
+          <img className='img-fluid feat'
+            src={detail.offline_image-url}
+            alt={detail.display_name}></img>
         </a>
       </div>
     );
   }
 }
 
-Location.propTypes = {
-  details: PropTypes.object.isRequired,
-  onClick: PropTypes.func.isRequired,
+Streamer.propTypes = {
+  detail: PropTypes.object.isRequired,
+  key: PropTypes.string,
 };
 
 
