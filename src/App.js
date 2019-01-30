@@ -9,6 +9,7 @@ import Featured from './components/Featured';
 import OtherStreams from './components/OtherStreams';
 import Foot from './components/Foot';
 import './css/app.css';
+import offline from './img/offline.png';
 
 // font awesome icon library
 library.add(faBars, faTree, faMapMarked, faWifi, faLeaf, faPaintBrush);
@@ -39,7 +40,7 @@ class WMPQApp extends React.Component {
     active_stream: '',
     related_streams: [],
     default_stream: 'robotros',
-    default_image: 'http://placehold.it/500x300',
+    default_image: offline,
   }
 
   /**
