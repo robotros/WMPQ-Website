@@ -22,6 +22,7 @@ class Featured extends Component {
           <FeatStream />
           <StreamDetails
             details={this.props.details}
+            desc={this.props.desc}
           />
         </div>
       </div>
@@ -32,6 +33,7 @@ class Featured extends Component {
 Featured.propTypes = {
   details: PropTypes.array.isRequired,
   active: PropTypes.string.isRequired,
+  desc: PropTypes.object,
 };
 
 export default Featured;

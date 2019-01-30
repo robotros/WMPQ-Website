@@ -11,14 +11,20 @@ class StreamDetails extends Component {
   * @return {Component} html
   */
   render() {
+    let info = this.props.details.length > 0 ? this.props.details[0] :
+      {'display_name': 'none', 'description': 'no stream available'};
+
+    let desc = this.props.desc ? this.props.desc :
+      {'title': 'no stream available'};
+
     return (
       <div className='col-md-2 infor'>
-        <h3 className='my-3'>Stream Description</h3>
+        <h3 className='my-3'>Stream Details</h3>
         <img className='image-responsive'
-          alt={this.props.details.display_name}
+          alt={info.display_name}
           height='20%'
-          src='{this.props.active_stream.profile_image_url}'></img>
-        <p className='description'>{this.props.details.description}</p>
+          src={info.profile_image_url}></img>
+        <p className='description'>{info.description}</p>
       </div>
     );
   }
@@ -26,6 +32,7 @@ class StreamDetails extends Component {
 
 StreamDetails.propTypes = {
   details: PropTypes.array.isRequired,
+  desc: PropTypes.object,
 };
 
 export default StreamDetails;

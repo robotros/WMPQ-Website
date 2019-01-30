@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+// import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 
 /**
@@ -15,9 +15,9 @@ class Streamer extends Component {
   render() {
     const detail = this.props.detail;
     let url = 'https://www.twitch.tv/'+detail.login;
-    let image = (detail.offline_image_url=="") ? this.props.default_image :
-      detail.offline_image_url;
-    console.log(detail);
+    let image = this.props.live ? this.props.live.thumbnail_url.replace(/ *\{[^)]*\} */g, '500x300') :
+      (detail.offline_image_url=='') ? this.props.default_image :
+        detail.offline_image_url;
 
     return (
       <div className='col-md-3 col-sm-6 mb-4'>
@@ -35,6 +35,7 @@ class Streamer extends Component {
 Streamer.propTypes = {
   detail: PropTypes.object.isRequired,
   default_image: PropTypes.string.isRequired,
+  live: PropTypes.object.isRequired,
 };
 
 export default Streamer;

@@ -21,6 +21,8 @@ class OtherStreams extends Component {
               key={stream.id}
               detail={stream}
               default_image={this.props.default_image}
+              live ={this.props.live.filter(
+                  (channel) => channel.user_name === stream.display_name)[0]}
             />)}
         </div>
       </div>
@@ -31,6 +33,7 @@ class OtherStreams extends Component {
 OtherStreams.propTypes = {
   details: PropTypes.array.isRequired,
   default_image: PropTypes.string.isRequired,
+  live: PropTypes.array.isRequired,
 };
 
 export default OtherStreams;
