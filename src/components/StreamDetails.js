@@ -19,13 +19,13 @@ class StreamDetails extends Component {
 
     return (
       <div className='col-md-2 infor'>
-        <h2 className='my-3'>Stream Details</h2>
+        <h2 className='my-3'>Stream</h2>
         <img className='feat image-responsive'
           alt={info.display_name}
           height='20%'
           src={info.profile_image_url}></img>
         <hr></hr>
-        <p className='description'>{info.description}</p>
+        <p className='description'>{info.description.trim()}</p>
       </div>
     );
   }

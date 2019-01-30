@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import logo from '../img/WMPQ-gaming-logo-03_brand.png';
+import NavLink from './NavLink';
+import PropTypes from 'prop-types';
 
 /**
 * React Component to Render footer for WMPQ Gaming
@@ -29,11 +31,11 @@ class Head extends Component {
             </button>
             <div className='collapse navbar-collapse' id='navbarResponsive'>
               <ul className='navbar-nav ml-auto'>
-                <li className='nav-item active'>
-                  <div className='nav-link'>Home
-                    <span className='sr-only'>(current)</span>
-                  </div>
-                </li>
+                {this.props.Nav.map((L) =>
+                  <NavLink
+                    key={L.path}
+                    L={L}
+                  />)}
               </ul>
             </div>
           </div>
@@ -42,5 +44,9 @@ class Head extends Component {
     );
   }
 }
+
+Head.propTypes = {
+  Nav: PropTypes.array.isRequired,
+};
 
 export default Head;

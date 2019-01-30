@@ -1,3 +1,10 @@
+/**
+* filename: App.js
+* Main component to render WMPQ Gaming Webpage
+*
+* Author:[Aron Roberts](github.com/robotros)
+* Last Update: 01/30/2019
+*/
 import React from 'react';
 import {Route} from 'react-router-dom';
 import ReactDOMServer from 'react-dom/server';
@@ -16,7 +23,6 @@ library.add(faCopyright, faFlagUsa);
 
 // setup Twitch
 const Twitch = window.Twitch;
-const $ = window.$;
 
 /**
 * React Component to Render WMPQ.org Website
@@ -42,6 +48,16 @@ class WMPQApp extends React.Component {
     related_streams: [],
     default_stream: 'robotros',
     default_image: offline,
+    Nav: [
+      {
+        'path': '/',
+        'label': 'Home',
+      },
+      {
+        'path': '/about',
+        'label': 'About',
+      },
+    ],
   }
 
   /**
@@ -49,22 +65,12 @@ class WMPQApp extends React.Component {
   * @param {string} user : name of user to embed
   */
   embedTwitch = (user) => {
-    if ( $(window).width() > 850) {
-      new Twitch.Embed('twitch-embed', {
-        width: 854,
-        height: 480,
-        channel: user,
-        theme: 'dark',
-      });
-    } else {
-      new Twitch.Embed('twitch-embed', {
-        width: $(window).width()-20,
-        height: 480,
-        channel: user,
-        theme: 'dark',
-        layout: 'video',
-      });
-    }
+    new Twitch.Embed('twitch-embed', {
+      width: '100%',
+      height: 400,
+      channel: user,
+      theme: 'dark',
+    });
   }
 
   /**
@@ -119,10 +125,17 @@ class WMPQApp extends React.Component {
   }
 
   /**
+  * Start polling Twitch API
+  */
+  pollTwitch() {
+    setInterval(this.getStreamerDetails(), 5*60*1000);
+  }
+
+  /**
   * Run methods once component has mounted
   */
   componentDidMount() {
-    this.getStreamerDetails();
+    this.pollTwitch();
   }
 
   /**
@@ -133,16 +146,20 @@ class WMPQApp extends React.Component {
     return (
       <main className='app'>
         <Route exact path='/' render={()=> (
-          <div className='WMPQ-App'>
-            <Head />
+          <div className='Home'>
+            <Head
+              Nav={this.state.Nav}/>
             <div className='container'>
               <Featured
                 active={this.state.active_stream}
                 details={this.state.streamer_details.filter(
-                    (channel) => channel.login === this.state.active_stream)}
+                    (channel) =>
+                      channel.login.toLowerCase() ===
+                        this.state.active_stream.toLowerCase())}
                 desc={this.state.live_streams.filter(
                     (channel) =>
-                      channel.user_name === this.state.active_stream)[0]}
+                      channel.user_name.toLowerCase() ===
+                        this.state.active_stream.toLowerCase())[0]}
               />
               <OtherStreams
                 details={this.state.related_streams}

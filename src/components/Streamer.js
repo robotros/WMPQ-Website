@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-// import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-
 
 /**
 * React Component to Render a related streamer
@@ -17,7 +15,7 @@ class Streamer extends Component {
     let url = 'https://www.twitch.tv/'+detail.login;
     let image = this.props.live ?
       this.props.live.thumbnail_url.replace(/ *\{[^)]*\} */g, '500x300') :
-        (detail.offline_image_url=='') ? this.props.default_image :
+        (detail.offline_image_url==='') ? this.props.default_image :
           detail.offline_image_url;
 
     return (

@@ -11,7 +11,7 @@ class FeatStream extends Component {
   */
   render() {
     return (
-      <div className='col-md-8 content' id='twitch-embed'></div>
+      <div className='col-md-10 content' id='twitch-embed'></div>
     );
   }
 }
