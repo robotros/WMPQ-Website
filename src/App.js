@@ -125,7 +125,8 @@ class WMPQApp extends React.Component {
             <Head />
             <Featured
               active={this.state.active_stream}
-              details={this.state.streamer_details.filter((channel) => channel.login === this.state.active_stream)}
+              details={this.state.streamer_details.filter(
+                  (channel) => channel.login === this.state.active_stream)}
             />
             <OtherStreams
               details={this.state.related_streams}
