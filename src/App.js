@@ -123,18 +123,20 @@ class WMPQApp extends React.Component {
         <Route exact path='/' render={()=> (
           <div className='WMPQ-App'>
             <Head />
-            <Featured
-              active={this.state.active_stream}
-              details={this.state.streamer_details.filter(
-                  (channel) => channel.login === this.state.active_stream)}
-              desc={this.state.live_streams.filter(
-                  (channel) => channel.user_name === this.state.active_stream)[0]}
-            />
-            <OtherStreams
-              details={this.state.related_streams}
-              default_image={this.state.default_image}
-              live={this.state.live_streams}
-            />
+            <div className='container'>
+              <Featured
+                active={this.state.active_stream}
+                details={this.state.streamer_details.filter(
+                    (channel) => channel.login === this.state.active_stream)}
+                desc={this.state.live_streams.filter(
+                    (channel) => channel.user_name === this.state.active_stream)[0]}
+              />
+              <OtherStreams
+                details={this.state.related_streams}
+                default_image={this.state.default_image}
+                live={this.state.live_streams}
+              />
+            </div>
             <Foot />
           </div>
         )}/>
