@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import Stream from './components/Stream';
-import Details from './components/Details';
+import FeatStream from './FeatStream';
+import StreamDetails from './StreamDetails';
 
 /**
 * React Component to Render Active Stream Details
@@ -19,8 +19,8 @@ class Featured extends Component {
           <small className='user_id'>{this.props.active_stream.user_id}</small>
         </h1>
         <div className='row'>
-          <Stream />
-          <Details
+          <FeatStream />
+          <StreamDetails
             details={this.props.details}
           />
         </div>

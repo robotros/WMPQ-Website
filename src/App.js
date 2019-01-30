@@ -5,10 +5,11 @@ import {library} from '@fortawesome/fontawesome-svg-core';
 import {faBars, faTree, faMapMarked, faWifi, faLeaf, faPaintBrush} from '@fortawesome/free-solid-svg-icons';
 import * as TwitchAPI from './components/TwitchAPI';
 import Head from './components/Head';
+import Twitch from './components/Twitch';
 import Featured from './components/Featured';
 import OtherStreams from './components/OtherStreams';
 import Foot from './components/Foot';
-import './css/App.css';
+import './css/app.css';
 
 // font awesome icon library
 library.add(faBars, faTree, faMapMarked, faWifi, faLeaf, faPaintBrush);

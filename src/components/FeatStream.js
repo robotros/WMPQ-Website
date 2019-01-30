@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 * React Component to Render Embeded Stream
 * @author [Aron Roberts](https://github.com/robotros)
 */
-class Stream extends Component {
+class FeatStream extends Component {
   /**
   * Render Component into html
   * @return {Component} html
@@ -16,4 +16,4 @@ class Stream extends Component {
   }
 }
 
-export default Stream;
+export default FeatStream;

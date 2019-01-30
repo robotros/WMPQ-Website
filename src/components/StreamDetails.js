@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 * React Component to Render Active Stream Details
 * @author [Aron Roberts](https://github.com/robotros)
 */
-class Details extends Component {
+class StreamDetails extends Component {
   /**
   * Render Component into html
   * @return {Component} html
@@ -24,8 +24,8 @@ class Details extends Component {
   }
 }
 
-Details.propTypes = {
+StreamDetails.propTypes = {
   details: PropTypes.array.isRequired,
 };
 
-export default Details;
+export default StreamDetails;
