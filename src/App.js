@@ -2,7 +2,7 @@ import React from 'react';
 import {Route} from 'react-router-dom';
 import ReactDOMServer from 'react-dom/server';
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {faBars, faTree, faMapMarked, faWifi, faLeaf, faPaintBrush} from '@fortawesome/free-solid-svg-icons';
+import {faCopyright, faFlagUsa} from '@fortawesome/free-solid-svg-icons';
 import * as TwitchAPI from './components/TwitchAPI';
 import Head from './components/Head';
 import Featured from './components/Featured';
@@ -12,10 +12,11 @@ import './css/app.css';
 import offline from './img/offline.png';
 
 // font awesome icon library
-library.add(faBars, faTree, faMapMarked, faWifi, faLeaf, faPaintBrush);
+library.add(faCopyright, faFlagUsa);
 
 // setup Twitch
 const Twitch = window.Twitch;
+const $ = window.$;
 
 /**
 * React Component to Render WMPQ.org Website
@@ -48,12 +49,22 @@ class WMPQApp extends React.Component {
   * @param {string} user : name of user to embed
   */
   embedTwitch = (user) => {
-    new Twitch.Embed('twitch-embed', {
-      width: 854,
-      height: 480,
-      channel: user,
-      theme: 'dark',
-    });
+    if ( $(window).width() > 963) {
+      new Twitch.Embed('twitch-embed', {
+        width: 854,
+        height: 480,
+        channel: user,
+        theme: 'dark',
+      });
+    } else {
+      new Twitch.Embed('twitch-embed', {
+        width: 854,
+        height: 480,
+        channel: user,
+        theme: 'dark',
+        layout: 'video',
+      });
+    }
   }
 
   /**
@@ -130,7 +141,8 @@ class WMPQApp extends React.Component {
                 details={this.state.streamer_details.filter(
                     (channel) => channel.login === this.state.active_stream)}
                 desc={this.state.live_streams.filter(
-                    (channel) => channel.user_name === this.state.active_stream)[0]}
+                    (channel) =>
+                      channel.user_name === this.state.active_stream)[0]}
               />
               <OtherStreams
                 details={this.state.related_streams}

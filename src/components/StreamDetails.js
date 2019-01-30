@@ -14,16 +14,17 @@ class StreamDetails extends Component {
     let info = this.props.details.length > 0 ? this.props.details[0] :
       {'display_name': 'none', 'description': 'no stream available'};
 
-    let desc = this.props.desc ? this.props.desc :
-      {'title': 'no stream available'};
+    // let desc = this.props.desc ? this.props.desc :
+    //   {'title': 'no stream available'};
 
     return (
       <div className='col-md-2 infor'>
-        <h3 className='my-3'>Stream Details</h3>
-        <img className='image-responsive'
+        <h2 className='my-3'>Stream Details</h2>
+        <img className='feat image-responsive'
           alt={info.display_name}
           height='20%'
           src={info.profile_image_url}></img>
+        <hr></hr>
         <p className='description'>{info.description}</p>
       </div>
     );

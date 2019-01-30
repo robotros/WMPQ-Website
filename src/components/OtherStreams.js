@@ -14,7 +14,8 @@ class OtherStreams extends Component {
   render() {
     return (
       <div className='related'>
-        <h3 className='my-4'>Other Streamers</h3>
+        <h2 className='my-4'>Other Streamers</h2>
+        <hr></hr>
         <div className='row'>
           {this.props.details.map((stream) =>
             <Streamer

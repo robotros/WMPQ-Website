@@ -15,13 +15,14 @@ class Streamer extends Component {
   render() {
     const detail = this.props.detail;
     let url = 'https://www.twitch.tv/'+detail.login;
-    let image = this.props.live ? this.props.live.thumbnail_url.replace(/ *\{[^)]*\} */g, '500x300') :
-      (detail.offline_image_url=='') ? this.props.default_image :
-        detail.offline_image_url;
+    let image = this.props.live ?
+      this.props.live.thumbnail_url.replace(/ *\{[^)]*\} */g, '500x300') :
+        (detail.offline_image_url=='') ? this.props.default_image :
+          detail.offline_image_url;
 
     return (
       <div className='col-md-3 col-sm-6 mb-4'>
-        <h4 >{detail.display_name}</h4>
+        <h3 >{detail.display_name}</h3>
         <a href={url}>
           <img className='img-fluid feat'
             src={image}

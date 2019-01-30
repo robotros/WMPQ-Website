@@ -4,7 +4,7 @@ import FeatStream from './FeatStream';
 import StreamDetails from './StreamDetails';
 
 /**
-* React Component to Render Active Stream Details
+* React Component to Render Active Stream and Details
 * @author [Aron Roberts](https://github.com/robotros)
 */
 class Featured extends Component {
@@ -14,7 +14,7 @@ class Featured extends Component {
   */
   render() {
     return (
-      <div className='content'>
+      <div>
         <h1 className='my-4'>[WMPQ]
           <small className='user_id'>{this.props.active}</small>
         </h1>

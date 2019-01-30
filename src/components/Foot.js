@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 /**
 * React Component to Render footer for WMPQ Gaming
@@ -14,8 +15,9 @@ class Foot extends Component {
       <footer className='py-5 bg-dark'>
         <div className='container'>
           <p className='m-0 text-center text-white'>
-            Copyright &copy; WMPQ Gaming 2018
+            <FontAwesomeIcon icon='flag-usa' /> Copyright <FontAwesomeIcon icon='copyright' /> WMPQ Gaming 2019
           </p>
+
         </div>
       </footer>
     );
