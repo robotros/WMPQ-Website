@@ -10,19 +10,18 @@ import {Route} from 'react-router-dom';
 import ReactDOMServer from 'react-dom/server';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {faCopyright, faFlagUsa} from '@fortawesome/free-solid-svg-icons';
-import * as TwitchAPI from './components/TwitchAPI';
 import Head from './components/Head';
-import Featured from './components/Featured';
-import OtherStreams from './components/OtherStreams';
 import Foot from './components/Foot';
+import Home from './components/Home';
+import Contact from './components/Contact';
+import Charity from './components/Charity';
+import Store from './components/Store';
+import About from './components/About';
 import './css/app.css';
-import offline from './img/offline.png';
+
 
 // font awesome icon library
 library.add(faCopyright, faFlagUsa);
-
-// setup Twitch
-const Twitch = window.Twitch;
 
 /**
 * React Component to Render WMPQ.org Website
@@ -30,112 +29,33 @@ const Twitch = window.Twitch;
 */
 class WMPQApp extends React.Component {
   state = {
-    wmpq_streams: ['robotros',
-      'triedge_wmpq',
-      'CarmineCarnage',
-      'topher269',
-      'kosmiic_',
-      'flaash15',
-      'firebird2270',
-      'draco18772',
-      'protomansp25',
-      'leroyalgaming',
-      'pastaf4r1an',
-    ],
-    streamer_details: [],
-    live_streams: [],
-    active_stream: '',
-    related_streams: [],
-    default_stream: 'robotros',
-    default_image: offline,
     Nav: [
       {
         'path': '/',
         'label': 'Home',
+        'component': Home,
       },
       {
         'path': '/about',
         'label': 'About',
+        'component': About,
+      },
+      {
+        'path': '/contact',
+        'label': 'Contact',
+        'component': Contact,
+      },
+      {
+        'path': '/charity',
+        'label': 'Charity',
+        'component': Charity,
+      },
+      {
+        'path': '/store',
+        'label': 'Store',
+        'component': Store,
       },
     ],
-  }
-
-  /**
-  * embed a twitch stream
-  * @param {string} user : name of user to embed
-  */
-  embedTwitch = (user) => {
-    new Twitch.Embed('twitch-embed', {
-      width: '100%',
-      height: 400,
-      channel: user,
-      theme: 'dark',
-    });
-  }
-
-  /**
-  * Select a random Live stream and embed it.
-  */
-  setActiveStream() {
-    let stream = this.state.default_stream;
-    let live = this.state.live_streams;
-    (live.length < 1) ? stream = this.state.default_stream :
-      stream = live[Math.floor(Math.random() * live.length)].user_name;
-    this.setState({active_stream: stream}, this.setRelatedStreams);
-    this.embedTwitch(stream);
-  }
-
-  /**
-  * Select related streams to feature
-  */
-  setRelatedStreams() {
-    let related = [];
-    let streamers = this.state.streamer_details;
-    let i = streamers.length > 3 ? 0 :
-      streamers.length > 0 ? 4-streamers.length : 4;
-    while (i < 4) {
-      let stream = streamers[Math.floor(Math.random()* streamers.length)];
-      if (related.filter((e) => e.id === stream.id).length < 1) {
-        related.push(stream);
-        i++;
-      }
-    }
-
-    this.setState({related_streams: related});
-  }
-
-  /**
-  * Make TwitchAPI call to get streamer information
-  */
-  async getStreamerDetails() {
-    await TwitchAPI.getChannels(this.state.wmpq_streams)
-        .then( (data) => {
-          this.setState({streamer_details: data.data}, this.getLiveStreams);
-        });
-  }
-
-  /**
-  * Make TwitchAPI call to get Live streamers
-  */
-  async getLiveStreams() {
-    await TwitchAPI.getLive(this.state.streamer_details)
-        .then(async (data) => {
-          await this.setState({live_streams: data.data}, this.setActiveStream);
-        });
-  }
-
-  /**
-  * Start polling Twitch API
-  */
-  pollTwitch() {
-    setInterval(this.getStreamerDetails(), 5*60*1000);
-  }
-
-  /**
-  * Run methods once component has mounted
-  */
-  componentDidMount() {
-    this.pollTwitch();
   }
 
   /**
@@ -145,31 +65,17 @@ class WMPQApp extends React.Component {
   render() {
     return (
       <main className='app'>
-        <Route exact path='/' render={()=> (
-          <div className='Home'>
-            <Head
-              Nav={this.state.Nav}/>
-            <div className='container'>
-              <Featured
-                active={this.state.active_stream}
-                details={this.state.streamer_details.filter(
-                    (channel) =>
-                      channel.login.toLowerCase() ===
-                        this.state.active_stream.toLowerCase())}
-                desc={this.state.live_streams.filter(
-                    (channel) =>
-                      channel.user_name.toLowerCase() ===
-                        this.state.active_stream.toLowerCase())[0]}
-              />
-              <OtherStreams
-                details={this.state.related_streams}
-                default_image={this.state.default_image}
-                live={this.state.live_streams}
-              />
-            </div>
-            <Foot />
-          </div>
-        )}/>
+        <Head Nav={this.state.Nav}/>
+        <div className='center'>
+          {this.state.Nav.map((page) =>
+            <Route
+              key={page.label}
+              exact path={page.path}
+              component={page.component}
+            />
+          )}
+        </div>
+        <Foot />
       </main>
     );
   }
