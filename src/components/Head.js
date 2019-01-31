@@ -4,7 +4,7 @@ import NavLink from './NavLink';
 import PropTypes from 'prop-types';
 
 /**
-* React Component to Render footer for WMPQ Gaming
+* React Component to Render Header for WMPQ Gaming
 * @author [Aron Roberts](https://github.com/robotros)
 */
 class Head extends Component {

@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 /**
-* React Component to Render footer for WMPQ Gaming
+* React Component to Render NavLinks for WMPQ Gaming
 * @author [Aron Roberts](https://github.com/robotros)
 */
 class NavLink extends Component {

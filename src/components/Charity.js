@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 /**
-* React Component to Render Baout
+* React Component to Render WMPQ Charity Stream
 * @author [Aron Roberts](https://github.com/robotros)
 */
 class Charity extends Component {

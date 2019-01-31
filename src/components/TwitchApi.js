@@ -1,3 +1,7 @@
+/**
+* Author: [Aron Roberts](github.com/robotros)
+*/
+
 // API Endpoint URL
 const api = 'https://api.twitch.tv/helix/';
 

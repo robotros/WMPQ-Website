@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 /**
-* React Component to Render Baout
+* React Component to Render WMPQ About Page
 * @author [Aron Roberts](https://github.com/robotros)
 */
 class About extends Component {
