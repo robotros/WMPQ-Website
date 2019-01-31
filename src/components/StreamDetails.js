@@ -14,12 +14,9 @@ class StreamDetails extends Component {
     let info = this.props.details.length > 0 ? this.props.details[0] :
       {'display_name': 'none', 'description': 'no stream available'};
 
-    // let desc = this.props.desc ? this.props.desc :
-    //   {'title': 'no stream available'};
-
     return (
       <div className='col-md-2 infor'>
-        <h2 className='my-3'>Stream</h2>
+        <h2 className='my-3'>Streamer</h2>
         <img className='feat image-responsive'
           alt={info.display_name}
           height='20%'

@@ -101,14 +101,13 @@ class Home extends React.Component {
   * Start polling Twitch API
   */
   pollTwitch() {
-    setInterval(this.getStreamerDetails(), 5*60*1000);
+    setInterval(this.getStreamerDetails(), 60*60*1000);
   }
 
   /**
   * Run methods once component has mounted
   */
   componentDidMount() {
-    // this.getStreamerDetails();
     this.pollTwitch();
   }
 
@@ -118,25 +117,23 @@ class Home extends React.Component {
   */
   render() {
     return (
-      <div className='Home'>
-        <div className='container'>
-          <Featured
-            active={this.state.active_stream}
-            details={this.state.streamer_details.filter(
-                (channel) =>
-                  channel.login.toLowerCase() ===
-                  this.state.active_stream.toLowerCase())}
-            desc={this.state.live_streams.filter(
-                (channel) =>
-                  channel.user_name.toLowerCase() ===
-                  this.state.active_stream.toLowerCase())[0]}
-          />
-          <OtherStreams
-            details={this.state.related_streams}
-            default_image={this.state.default_image}
-            live={this.state.live_streams}
-          />
-        </div>
+      <div className='Home container'>
+        <Featured
+          active={this.state.active_stream}
+          details={this.state.streamer_details.filter(
+              (channel) =>
+                channel.login.toLowerCase() ===
+                this.state.active_stream.toLowerCase())}
+          desc={this.state.live_streams.filter(
+              (channel) =>
+                channel.user_name.toLowerCase() ===
+                this.state.active_stream.toLowerCase())[0]}
+        />
+        <OtherStreams
+          details={this.state.related_streams}
+          default_image={this.state.default_image}
+          live={this.state.live_streams}
+        />
       </div>
     );
   }

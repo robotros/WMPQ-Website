@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 
-
 /**
 * React Component to Render Baout
 * @author [Aron Roberts](https://github.com/robotros)
@@ -12,7 +11,7 @@ class Charity extends Component {
   */
   render() {
     return (
-      <div className='Contact'>
+      <div className='Contact container'>
         <h1>Causes WMPQ Support</h1>
         <p>This page is still under construction.
         Our Primary Charity for 2019 is Extra-life.
@@ -22,6 +21,5 @@ class Charity extends Component {
     );
   }
 }
-
 
 export default Charity;

@@ -3,7 +3,7 @@ import Streamer from './Streamer';
 import PropTypes from 'prop-types';
 
 /**
-* React Component to Render a Shelf
+* React Component to Render a set of related channels
 * @author [Aron Roberts](https://github.com/robotros)
 */
 class OtherStreams extends Component {
