@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {SocialIcon} from 'react-social-icons';
 
 /**
 * React Component to Render footer for WMPQ Gaming
@@ -14,14 +16,29 @@ class Foot extends Component {
     return (
       <footer className='py-5 bg-dark'>
         <div className='container'>
-          <p className='m-0 text-center text-white'>
-            <FontAwesomeIcon icon='flag-usa' /> Copyright <FontAwesomeIcon icon='copyright' /> WMPQ Gaming 2019
-          </p>
-
+          <div className='row'>
+            <div className='col-md-6'>
+              {this.props.social.map((S) =>
+                <SocialIcon
+                  key={S.url}
+                  url={S.url}
+                />
+              )}
+            </div>
+            <div className='col-md-6'>
+              <p className='m-0 text-center text-white'>
+                 Copyright <FontAwesomeIcon icon='copyright' /> 2019 WMPQ Gaming
+              </p>
+            </div>
+          </div>
         </div>
       </footer>
     );
   }
 }
+
+Foot.propTypes = {
+  social: PropTypes.array.isRequired,
+};
 
 export default Foot;
