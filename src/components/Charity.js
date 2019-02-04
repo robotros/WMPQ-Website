@@ -5,6 +5,15 @@ import React, {Component} from 'react';
 * @author [Aron Roberts](https://github.com/robotros)
 */
 class Charity extends Component {
+  state ={
+    causes: [
+      {
+        'name': '',
+        'details': '',
+        'image:': '',
+      },
+    ],
+  }
   /**
   * Render Component into html
   * @return {Component} html
