@@ -3,7 +3,7 @@
 * Main component to render WMPQ Gaming Webpage
 *
 * Author:[Aron Roberts](github.com/robotros)
-* Last Update: 01/30/2019
+* Last Update: 02/04/2019
 */
 import React from 'react';
 import {Route} from 'react-router-dom';
@@ -13,11 +13,11 @@ import {faCopyright, faFlagUsa} from '@fortawesome/free-solid-svg-icons';
 import Head from './components/Head';
 import Foot from './components/Foot';
 import Home from './components/Home';
-import Contact from './components/Contact';
 import Charity from './components/Charity';
 import Store from './components/Store';
 import About from './components/About';
 import './css/app.css';
+// import Contact from './components/Contact';
 
 
 // font awesome icon library
@@ -41,11 +41,6 @@ class WMPQApp extends React.Component {
         'component': About,
       },
       {
-        'path': '/contact',
-        'label': 'Contact',
-        'component': Contact,
-      },
-      {
         'path': '/charity',
         'label': 'Charity',
         'component': Charity,
@@ -55,6 +50,12 @@ class WMPQApp extends React.Component {
         'label': 'Store',
         'component': Store,
       },
+    ],
+    social: [
+      {'url': 'https://www.facebook.com/wmpqgaming'},
+      {'url': 'https://www.youtube.com/channel/UCgXsCoR3OWw7IE6UL_NWJYQ'},
+      {'url': 'https://www.twitch.tv/robotros'},
+      // {'url': 'emailto:robotros@wmpq.org'},
     ],
   }
 
@@ -75,7 +76,7 @@ class WMPQApp extends React.Component {
             />
           )}
         </div>
-        <Foot />
+        <Foot social={this.state.social}/>
       </main>
     );
   }
