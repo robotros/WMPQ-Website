@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import controller from '../img/blue-controller-dualshock.png';
-import logo from '../img/WMPQ-gaming-logo-03_brand.png';
 
 /**
 * React Component to Render WMPQ About Page
