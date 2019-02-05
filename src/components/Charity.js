@@ -43,6 +43,7 @@ class Charity extends Component {
         <ul>
           {this.state.causes.map((C) =>
             <Cause
+              key={C.url}
               C={C}
             />
           )}
