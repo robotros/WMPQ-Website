@@ -55,6 +55,7 @@ class WMPQApp extends React.Component {
       {'url': 'https://www.facebook.com/wmpqgaming'},
       {'url': 'https://www.youtube.com/channel/UCgXsCoR3OWw7IE6UL_NWJYQ'},
       {'url': 'https://www.twitch.tv/robotros'},
+      {'url': 'https://discord.gg/SDpxpVh'},
       // {'url': 'emailto:robotros@wmpq.org'},
     ],
   }
