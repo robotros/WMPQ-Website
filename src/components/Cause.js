@@ -15,7 +15,7 @@ class Cause extends Component {
       <div>
         <h2>{this.props.C.name}</h2>
         <a href={this.props.C.url}>
-          <img className='img-responsive'
+          <img className='img-fluid img-charity'
             src={this.props.C.image}
             alt={this.props.C.name}>
           </img>

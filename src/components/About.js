@@ -15,7 +15,7 @@ class About extends Component {
       <div className='About container'>
         <h1>About <span className='text-danger'>W</span>
           M<span className='text-danger'>P</span>Q Gaming</h1>
-        <img src={controller} className='img-responsive' alt='WMPQ'></img>
+        <img src={controller} className='img-fluid img-responsive center-align' alt='WMPQ'></img>
         <hr></hr>
         <p>WMPQ Gaming is an organization for gamers founded in 2007.<br></br>
           WMPQ Gaming is focused on providing a positive enviroment for people.

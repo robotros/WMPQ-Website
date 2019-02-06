@@ -22,9 +22,9 @@ class Store extends Component {
           <a href='https://www.designbyhumans.com/shop/WMPQ/?fbclid=IwAR2qiLo6qbzI0XXQ9VM_ZfBRigGLd42FGWDoEFeQoOFAj-8lfxzdcxmPo6E' > Design By Humans store.</a>
         </p>
 
-        <img src={vegas} className='img-responsive merch' alt='vegas'></img>
-        <img src={hoodie} className='img-responsive merch' alt='hoodie'></img>
-        <img src={shirt} className='img-responsive merch' alt='shirt'></img>
+        <img src={vegas} className='img-responsive img-fluid  img-thumbnail merch' alt='vegas'></img>
+        <img src={hoodie} className='img-responsive img-fluid img-thumbnail merch' alt='hoodie'></img>
+        <img src={shirt} className='img-responsive img-fluid img-thumbnail merch' alt='shirt'></img>
 
       </div>
     );

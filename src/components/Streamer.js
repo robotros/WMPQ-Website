@@ -22,7 +22,7 @@ class Streamer extends Component {
       <div className='col-md-3 col-sm-6 mb-4'>
         <h3 >{detail.display_name}</h3>
         <a href={url}>
-          <img className='img-fluid feat'
+          <img className='img-fluid img-thumbnail feat'
             src={image}
             alt={detail.display_name}></img>
         </a>

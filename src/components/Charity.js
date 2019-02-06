@@ -11,7 +11,7 @@ class Charity extends Component {
         'name': 'Extra-Life',
         'url': 'https://www.extra-life.org/team/44002',
         'details': 'Extra Life unites thousands of gamers around the world to play games in support of their local Children\'s Miracle Network Hospital. Since its inception in 2008, Extra Life has raised more than $50 million for sick and injured kids.',
-        'image': 'https://tombraiders.net/stella/images/blog/extra-life/extra-life-banner.jpg',
+        'image': 'https://www.chla.org/sites/default/files/thumbnails/image/CHLA-Extra-Life-Transparent-03.png',
       },
       {
         'name': 'Donors Choose',
@@ -40,14 +40,14 @@ class Charity extends Component {
         In order to Motivate our members, WMPQ has put together a list of Quality causes that we encourage our members to be <span className='text-danger'>P</span>assionate about.
         More details at www.esports.charity
         </p>
-        <ul>
+        <section>
           {this.state.causes.map((C) =>
             <Cause
               key={C.url}
               C={C}
             />
           )}
-        </ul>
+        </section>
       </div>
     );
   }
