@@ -3,9 +3,10 @@
 This is the website for WMPQ Gaming 
 
 The functionality of the application is as follows.
-1. A featured stream from [twitch](https://twitch.tv).
-2. 4 more suggested streams
+1. a featured stream from [twitch](https://twitch.tv).
+2. 4 more suggested streams from WMPQ members
 3. display offline or Live-Thumbnail for suggested streams
+4. using routing to create multiple pages
 
 ## QuickStart
 
@@ -17,11 +18,10 @@ The functionality of the application is as follows.
 
 The following will be required to build and run this program
 
-1. A compatible web browser
+1. a compatible web browser
 2. nodeJS
 3. Twitch [API Key](https://dev.twitch.tv)
-4. nodeJS
-5. the follwing packages
+4. the follwing packages
 ```xml
     "@fortawesome/fontawesome-svg-core": "^1.2.13",
     "@fortawesome/free-solid-svg-icons": "^5.7.0",
@@ -44,12 +44,13 @@ The following will be required to build and run this program
 
 ## Footnotes
 
-* Tested with Chrome
+* tested with Chrome
 * active internet connection required for some functionality
 * built using [Twitch API](https://dev.twitch.tv)
 * built using [Font Awesome](https://fontawesome.com/)
-* Live version deployed at [WMPQ Gaming](https://wmpq.org)
+* live version deployed at [WMPQ Gaming](https://wmpq.org)
 
 ## Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). You can find more information on how to perform common tasks [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). 
+You can find more information on how to perform common tasks [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
