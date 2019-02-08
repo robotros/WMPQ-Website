@@ -1,5 +1,5 @@
 {
-  "homepage": "http://www.wmpq.org",
+  "homepage": "https://www.wmpq.org",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.13",
     "@fortawesome/free-solid-svg-icons": "^5.7.0",
