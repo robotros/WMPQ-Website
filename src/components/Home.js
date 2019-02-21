@@ -26,6 +26,7 @@ class Home extends React.Component {
       'pastaf4r1an',
       'mrborn2kil',
       'virtuallycanadian',
+      'DvDplaya1',
     ],
     streamer_details: [],
     live_streams: [],
