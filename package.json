@@ -1,20 +1,24 @@
 {
   "homepage": "https://www.wmpq.org",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robotros/WMPQ-Website"
+  },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.13",
-    "@fortawesome/free-solid-svg-icons": "^5.7.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.15",
+    "@fortawesome/free-solid-svg-icons": "^5.7.2",
     "@fortawesome/react-fontawesome": "^0.1.4",
-    "ajv": "^6.7.0",
+    "ajv": "^6.9.2",
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.12.1",
+    "eslint": "^5.14.1",
     "eslint-config-google": "^0.10.0",
-    "eslint-plugin-jsx-a11y": "^6.2.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "install": "^0.12.2",
-    "npm": "^6.7.0",
-    "prop-types": "^15.6.2",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
+    "npm": "^6.8.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
     "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
