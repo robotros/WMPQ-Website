@@ -16,6 +16,8 @@ import Home from './components/Home';
 import Charity from './components/Charity';
 import Store from './components/Store';
 import About from './components/About';
+import Royale from './components/Royale';
+import WMPQLive from './components/WMPQLive';
 import './css/app.css';
 // import Contact from './components/Contact';
 
@@ -49,6 +51,16 @@ class WMPQApp extends React.Component {
         'path': '/store',
         'label': 'Store',
         'component': Store,
+      },
+      {
+        'path': '/wmpqlive',
+        'label': 'Live',
+        'component': WMPQLive,
+      },
+      {
+        'path': '/royale',
+        'label': 'Royale',
+        'component': Royale,
       },
     ],
     social: [
