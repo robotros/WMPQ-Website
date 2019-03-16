@@ -18,7 +18,8 @@ class Featured extends Component {
         <h1 className='my-4'>[<span className='text-danger'>W</span>M<span className='text-danger'>P</span>Q] <small className='user_id'>{this.props.active}</small>
         </h1>
         <div className='row'>
-          <FeatStream />
+          <FeatStream
+            id='twitch-embed'/>
           <StreamDetails
             details={this.props.details}
             desc={this.props.desc}

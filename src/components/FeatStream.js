@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 /**
 * React Component to Render Embeded Stream
@@ -11,9 +12,13 @@ class FeatStream extends Component {
   */
   render() {
     return (
-      <div className='col-md-10 content' id='twitch-embed'></div>
+      <div className='col-md-10 content' id={this.props.id}></div>
     );
   }
 }
+
+FeatStream.propTypes = {
+  id: PropTypes.string.isRequired,
+};
 
 export default FeatStream;
