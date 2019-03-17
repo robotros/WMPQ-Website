@@ -17,6 +17,7 @@ class Royale extends React.Component {
       'Captain_Cab1net',
       'DeoxysA',
       'Earlswood',
+      'TheRabbleWrangler',
       'Nicko1117',
       'imbeergoggles',
       '0_DoubleZero_0',
@@ -59,6 +60,8 @@ class Royale extends React.Component {
       'Timotor9001',
       'Vesi',
       'Wizurd_Merlin',
+      'TeamTNT',
+      'Woottodoo',
     ],
     ids: [
       'twitch-embed1',
