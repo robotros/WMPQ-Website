@@ -102,17 +102,10 @@ class Home extends React.Component {
   }
 
   /**
-  * Start polling Twitch API
-  */
-  pollTwitch() {
-    setInterval(this.getStreamerDetails(), 60*60*1000);
-  }
-
-  /**
   * Run methods once component has mounted
   */
   componentDidMount() {
-    this.pollTwitch();
+    this.getStreamerDetails();
   }
 
   /**

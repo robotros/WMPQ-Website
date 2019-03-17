@@ -9,23 +9,56 @@ const Twitch = window.Twitch;
 * React Component to Render WMPQ.org home page
 * @author [Aron Roberts](https://github.com/robotros)
 */
-class WMPQLive extends React.Component {
+class Royale extends React.Component {
   state = {
-    wmpq_streams: ['robotros',
-      'triedge_wmpq',
-      'CarmineCarnage',
-      'topher269',
-      'kosmiic_',
-      'flaash15',
-      'firebird2270',
-      'draco18772',
-      'protomansp25',
-      'leroyalgaming',
-      'pastaf4r1an',
-      'mrborn2kil',
-      'virtuallycanadian',
-      'DvDplaya1',
-      'jamerk_here',
+    royale_streams: [
+      '8BBattle',
+      'BrAshPop',
+      'Captain_Cab1net',
+      'DeoxysA',
+      'Earlswood',
+      'Nicko1117',
+      'imbeergoggles',
+      '0_DoubleZero_0',
+      'AapaSauce',
+      'Armageddon',
+      'Bax_CD',
+      'BigtimeRob',
+      'BlackLion_22',
+      'CrazeG4',
+      'derp_',
+      'DissernTV',
+      'DrLucianoJr',
+      'EternalKingLive',
+      'Hadouless',
+      'Heavens_WingTV',
+      'itzBrittney',
+      'jesstreams',
+      'Jwaitt86',
+      'Kayslayz',
+      'KeepitSour',
+      'LastKardax',
+      'LeoWurf',
+      'MisterSkids',
+      'MuklukTwitch',
+      'mxneymitxh',
+      'N3rdRag3_',
+      'Naxant',
+      'OmegaValeron',
+      'PrismaticHub',
+      'Pulse35',
+      'SillyNetwork',
+      'smonme',
+      'tbgxmurder',
+      'teambrianlee',
+      'TheKayJ',
+      'TheSavagePack',
+      'TheShazammman',
+      'Thumper0069',
+      'Tiliey',
+      'Timotor9001',
+      'Vesi',
+      'Wizurd_Merlin',
     ],
     ids: [
       'twitch-embed1',
@@ -80,7 +113,7 @@ class WMPQLive extends React.Component {
   * Make TwitchAPI call to get streamer information
   */
   async getStreamerDetails() {
-    await TwitchAPI.getChannels(this.state.wmpq_streams)
+    await TwitchAPI.getChannels(this.state.royale_streams)
         .then( (data) => {
           this.setState({streamer_details: data.data}, this.getLiveStreams);
         });
@@ -103,6 +136,7 @@ class WMPQLive extends React.Component {
     window.location.reload();
   }
 
+
   /**
   * Run methods once component has mounted
   */
@@ -118,15 +152,16 @@ class WMPQLive extends React.Component {
   render() {
     return (
       <div className='Home container'>
-        {
-          this.state.live_streams.length >0 ? this.state.ids.map((id) =>
-            <FeatStream
-              key={id}
-              id={id}/>
-          ) : <h2> No Live Streams Found</h2>}
+        {this.state.ids.map((id) =>
+          <FeatStream
+            key={id}
+            id={id}/>
+        )}
+        <FeatStream
+          id='twitch-embed'/>
       </div>
     );
   }
 }
 
-export default WMPQLive;
+export default Royale;
