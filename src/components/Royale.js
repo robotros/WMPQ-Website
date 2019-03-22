@@ -3,6 +3,7 @@ import Papa from 'papaparse';
 import * as TwitchAPI from './TwitchAPI';
 import FeatStream from './FeatStream';
 import csvFile from '../data/royale.csv';
+import royaleLogo from '../img/Royale.png';
 
 // setup Twitch
 const Twitch = window.Twitch;
@@ -18,6 +19,7 @@ class Royale extends React.Component {
     streamer_details: [],
     live_streams: [],
     active_streams: [],
+    max_streams: 10,
   }
 
   /**
@@ -61,7 +63,8 @@ class Royale extends React.Component {
     if (live.length > 0) {
       let streams = [];
       let i=0;
-      let max = live.length < 10 ? live.length : 10;
+      let max = live.length < this.state.max_streams ?
+        live.length : this.state.max_streams;
       while (i<max) {
         let stream = live[i].user_name;
         let id = 'twitch-embed'+i;
@@ -80,7 +83,6 @@ class Royale extends React.Component {
   async getStreamerDetails() {
     await TwitchAPI.getChannels(this.state.royale_streams)
         .then( (data) => {
-          console.log(this.state.royale_streams);
           this.setState({streamer_details: data.data}, this.getLiveStreams);
         });
   }
@@ -118,8 +120,10 @@ class Royale extends React.Component {
   render() {
     return (
       <div className='Home container'>
-        <h1>Royale Streamers</h1>
-        <h2>Displaying {this.state.id.length} Streams</h2>
+        <br></br>
+        <a href='https://discord.gg/G3Rq5nq'><img src={royaleLogo} alt='Royale Streamers'></img></a>
+        <h2>Displaying {this.state.ids.length} Streams</h2>
+        <hr></hr>
         {this.state.ids.map((id) =>
           <FeatStream
             key={id}

@@ -116,7 +116,7 @@ class WMPQLive extends React.Component {
   render() {
     return (
       <div className='live container'>
-        <h1> WMPQ Streamers</h1>
+        <h1><span className='text-danger'>W</span>M<span className='text-danger'>P</span>Q Streaming Now</h1>
         {
           this.state.live_streams.length >0 ? this.state.ids.map((id) =>
             <FeatStream
