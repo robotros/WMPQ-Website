@@ -1,8 +1,10 @@
 import React from 'react';
+import Papa from 'papaparse';
 import * as TwitchAPI from './TwitchAPI';
 import Featured from './Featured';
 import OtherStreams from './OtherStreams';
 import offline from '../img/offline.png';
+import csvFile from '../data/wmpq.csv';
 
 // setup Twitch
 const Twitch = window.Twitch;
@@ -13,28 +15,32 @@ const Twitch = window.Twitch;
 */
 class Home extends React.Component {
   state = {
-    wmpq_streams: ['robotros',
-      'triedge_wmpq',
-      'CarmineCarnage',
-      'topher269',
-      'kosmiic_',
-      'flaash15',
-      'firebird2270',
-      'draco18772',
-      'protomansp25',
-      'leroyalgaming',
-      'pastaf4r1an',
-      'mrborn2kil',
-      'virtuallycanadian',
-      'DvDplaya1',
-      'jamerk_here',
-    ],
+    wmpq_streams: [],
     streamer_details: [],
     live_streams: [],
     active_stream: '',
     related_streams: [],
     default_stream: 'robotros',
     default_image: offline,
+  }
+
+  /**
+  * read csv
+  */
+  readCsv() {
+    Papa.parse(csvFile, {
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      complete: (results) => {
+        this.setState(
+            {wmpq_streams: results.data},
+            () => {
+              this.getStreamerDetails();
+            }
+        );
+      },
+    });
   }
 
   /**
@@ -105,7 +111,7 @@ class Home extends React.Component {
   * Run methods once component has mounted
   */
   componentDidMount() {
-    this.getStreamerDetails();
+    this.readCsv();
   }
 
   /**

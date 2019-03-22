@@ -20,8 +20,8 @@ const request = {
 export const getChannels = (list) => {
   let query='';
   list.forEach((name, i, arr) => {
-    (i === 0) ? query = query + name :
-      query = query + '&login='+name;
+    (i === 0) ? query = query + name['channel'] :
+      query = query + '&login='+name['channel'];
   });
   query = api+'users?login='+query;
   return fetch(query, request)
