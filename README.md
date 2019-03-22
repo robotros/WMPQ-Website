@@ -23,23 +23,24 @@ The following will be required to build and run this program
 3. Twitch [API Key](https://dev.twitch.tv)
 4. the follwing packages
 ```xml
-    "@fortawesome/fontawesome-svg-core": "^1.2.13",
-    "@fortawesome/free-solid-svg-icons": "^5.7.0",
-    "@fortawesome/react-fontawesome": "^0.1.4",
-    "ajv": "^6.7.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.12.1",
-    "eslint-config-google": "^0.10.0",
-    "eslint-plugin-jsx-a11y": "^6.2.0",
-    "eslint-plugin-react": "^7.12.4",
-    "install": "^0.12.2",
-    "npm": "^6.7.0",
-    "prop-types": "^15.6.2",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "react-router-dom": "^4.3.1"
     "react-scripts": "1.1.4",
     "react-social-icons": "^4.1.0"
+    "@fortawesome/fontawesome-svg-core": "^1.2.17",
+    "@fortawesome/free-solid-svg-icons": "^5.8.1",
+    "@fortawesome/react-fontawesome": "^0.1.4",
+    "ajv": "^6.10.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.15.3",
+    "eslint-config-google": "^0.10.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
+    "install": "^0.12.2",
+    "npm": "^6.9.0",
+    "papaparse": "^4.6.3",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-router-dom": "^4.3.1"
 ```
 
 ## Footnotes
