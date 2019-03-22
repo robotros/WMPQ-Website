@@ -60,16 +60,17 @@ class WMPQLive extends React.Component {
     let live = this.state.live_streams;
     if (live.length > 0) {
       let streams = [];
-      let i=0;
+      let i = 0;
       let max = live.length;
       while (i<max) {
         let stream = live[i].user_name;
         let id = 'twitch-embed'+i;
-        this.embedTwitch(stream, id);
         streams.push(id);
+        this.setState({ids: streams}, () => {
+          this.embedTwitch(stream, id);
+        });
         i++;
       }
-      this.setState({ids: streams});
     }
   }
 
@@ -87,7 +88,6 @@ class WMPQLive extends React.Component {
   * Make TwitchAPI call to get Live streamers
   */
   async getLiveStreams() {
-    console.log(this.state.streamer_details);
     await TwitchAPI.getLive(this.state.streamer_details)
         .then(async (data) => {
           await this.setState({live_streams: data.data}, this.setActiveStreams);
@@ -115,7 +115,8 @@ class WMPQLive extends React.Component {
   */
   render() {
     return (
-      <div className='Home container'>
+      <div className='live container'>
+        <h1> WMPQ Streamers</h1>
         {
           this.state.live_streams.length >0 ? this.state.ids.map((id) =>
             <FeatStream

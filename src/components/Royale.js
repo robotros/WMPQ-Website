@@ -1,6 +1,8 @@
 import React from 'react';
+import Papa from 'papaparse';
 import * as TwitchAPI from './TwitchAPI';
 import FeatStream from './FeatStream';
+import csvFile from '../data/royale.csv';
 
 // setup Twitch
 const Twitch = window.Twitch;
@@ -11,70 +13,8 @@ const Twitch = window.Twitch;
 */
 class Royale extends React.Component {
   state = {
-    royale_streams: [
-      '8BBattle',
-      'BrAshPop',
-      'Captain_Cab1net',
-      'DeoxysA',
-      'Earlswood',
-      'TheRabbleWrangler',
-      'Nicko1117',
-      'imbeergoggles',
-      '0_DoubleZero_0',
-      'AapaSauce',
-      'Armageddon',
-      'Bax_CD',
-      'BigtimeRob',
-      'BlackLion_22',
-      'CrazeG4',
-      'derp_',
-      'DissernTV',
-      'DrLucianoJr',
-      'EternalKingLive',
-      'Hadouless',
-      'Heavens_WingTV',
-      'itzBrittney',
-      'jesstreams',
-      'Jwaitt86',
-      'Kayslayz',
-      'KeepitSour',
-      'LastKardax',
-      'LeoWurf',
-      'MisterSkids',
-      'MuklukTwitch',
-      'mxneymitxh',
-      'N3rdRag3_',
-      'Naxant',
-      'OmegaValeron',
-      'PrismaticHub',
-      'Pulse35',
-      'SillyNetwork',
-      'smonme',
-      'tbgxmurder',
-      'teambrianlee',
-      'TheKayJ',
-      'TheSavagePack',
-      'TheShazammman',
-      'Thumper0069',
-      'Tiliey',
-      'Timotor9001',
-      'Vesi',
-      'Wizurd_Merlin',
-      'TeamTNT',
-      'Woottodoo',
-    ],
-    ids: [
-      'twitch-embed1',
-      'twitch-embed2',
-      'twitch-embed3',
-      'twitch-embed4',
-      'twitch-embed5',
-      'twitch-embed6',
-      'twitch-embed7',
-      'twitch-embed8',
-      'twitch-embed9',
-      'twitch-embed10',
-    ],
+    royale_streams: [],
+    ids: [],
     streamer_details: [],
     live_streams: [],
     active_streams: [],
@@ -95,6 +35,25 @@ class Royale extends React.Component {
   }
 
   /**
+  * read csv
+  */
+  readCsv() {
+    Papa.parse(csvFile, {
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      complete: (results) => {
+        this.setState(
+            {royale_streams: results.data},
+            () => {
+              this.getStreamerDetails();
+            }
+        );
+      },
+    });
+  }
+
+  /**
   * Select a random Live stream and embed it.
   */
   setActiveStreams() {
@@ -102,11 +61,14 @@ class Royale extends React.Component {
     if (live.length > 0) {
       let streams = [];
       let i=0;
-      let max = live.length < this.state.ids.length ? live.length : this.state.ids.length;
+      let max = live.length < 10 ? live.length : 10;
       while (i<max) {
-        let stream=live[i].user_name;
-        this.embedTwitch(stream, this.state.ids[i]);
-        streams.push(stream);
+        let stream = live[i].user_name;
+        let id = 'twitch-embed'+i;
+        streams.push(id);
+        this.setState({ids: streams}, () => {
+          this.embedTwitch(stream, id);
+        });
         i++;
       }
     }
@@ -118,6 +80,7 @@ class Royale extends React.Component {
   async getStreamerDetails() {
     await TwitchAPI.getChannels(this.state.royale_streams)
         .then( (data) => {
+          console.log(this.state.royale_streams);
           this.setState({streamer_details: data.data}, this.getLiveStreams);
         });
   }
@@ -144,7 +107,7 @@ class Royale extends React.Component {
   * Run methods once component has mounted
   */
   componentDidMount() {
-    this.getStreamerDetails();
+    this.readCsv();
     setTimeout(this.refreshPage, 60*60*1000);
   }
 
@@ -155,6 +118,8 @@ class Royale extends React.Component {
   render() {
     return (
       <div className='Home container'>
+        <h1>Royale Streamers</h1>
+        <h2>Displaying {this.state.id.length} Streams</h2>
         {this.state.ids.map((id) =>
           <FeatStream
             key={id}
