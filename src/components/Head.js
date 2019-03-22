@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import logo from '../img/WMPQ-gaming-logo-03_brand.png';
-import NavLink from './NavLink';
+import NavLinks from './NavLinks';
 import PropTypes from 'prop-types';
 
 /**
@@ -32,7 +32,7 @@ class Head extends Component {
             <div className='collapse navbar-collapse' id='navbarResponsive'>
               <ul className='navbar-nav ml-auto'>
                 {this.props.Nav.map((L) =>
-                  <NavLink
+                  <NavLinks
                     key={L.path}
                     L={L}
                   />)}
