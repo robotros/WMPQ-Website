@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import * as TwitchAPI from './TwitchAPI';
 import FeatStream from './FeatStream';
-import csvFile from '../data/royale.csv';
 import royaleLogo from '../img/Royale.png';
 
 // setup Twitch
@@ -93,7 +92,7 @@ class Royale extends React.Component {
     const url = '/api/royale/index.php';
     axios.get(url).then((response) => response.data)
         .then((data) => {
-          this.setState({royal_streams: data}, ()=> {
+          this.setState({royale_streams: data}, ()=> {
             this.getStreamerDetails();
           });
         });
