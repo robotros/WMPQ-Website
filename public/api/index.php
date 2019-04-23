@@ -1,8 +1,7 @@
-
 <?php
-$host = "localhost:3306";
+$host = "localhost";
 $user = "robotros_wmpq";
-$password = "d$JVyWU8,E~u";
+$password = "Zi_9iQfJ(~v*";
 $dbname = "robotros_wmpq";
 $id = '';
 
@@ -21,11 +20,6 @@ switch ($method) {
     case 'GET':
       $id = $_GET;
       $sql = "select * from streamers";
-      break;
-    case 'POST':
-      $name = $_POST["channel"];
-      $email = $_POST["name"];
-      $sql = "insert into streamers (channel, name) values ('$channel', '$name')";
       break;
 }
 
