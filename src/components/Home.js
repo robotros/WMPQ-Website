@@ -5,6 +5,7 @@ import Featured from './Featured';
 import OtherStreams from './OtherStreams';
 import offline from '../img/offline.png';
 import csvFile from '../data/wmpq.csv';
+import axios from 'axios';
 
 // setup Twitch
 const Twitch = window.Twitch;
@@ -22,6 +23,7 @@ class Home extends React.Component {
     related_streams: [],
     default_stream: 'robotros',
     default_image: offline,
+    test: [],
   }
 
   /**
@@ -111,7 +113,14 @@ class Home extends React.Component {
   * Run methods once component has mounted
   */
   componentDidMount() {
-    this.readCsv();
+    //this.readCsv();
+    const url = '/api/index.php';
+    axios.get(url).then((response) => response.data)
+        .then((data) => {
+          this.setState({wmpq_streams: data}, ()=> {
+            this.getStreamerDetails();
+          });
+        });
   }
 
   /**
