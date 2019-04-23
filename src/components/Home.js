@@ -1,10 +1,8 @@
 import React from 'react';
-import Papa from 'papaparse';
 import * as TwitchAPI from './TwitchAPI';
 import Featured from './Featured';
 import OtherStreams from './OtherStreams';
 import offline from '../img/offline.png';
-import csvFile from '../data/wmpq.csv';
 import axios from 'axios';
 
 // setup Twitch
@@ -24,25 +22,6 @@ class Home extends React.Component {
     default_stream: 'robotros',
     default_image: offline,
     test: [],
-  }
-
-  /**
-  * read csv
-  */
-  readCsv() {
-    Papa.parse(csvFile, {
-      download: true,
-      header: true,
-      skipEmptyLines: true,
-      complete: (results) => {
-        this.setState(
-            {wmpq_streams: results.data},
-            () => {
-              this.getStreamerDetails();
-            }
-        );
-      },
-    });
   }
 
   /**
@@ -113,8 +92,7 @@ class Home extends React.Component {
   * Run methods once component has mounted
   */
   componentDidMount() {
-    //this.readCsv();
-    const url = '/api/index.php';
+    const url = '/api/streamers/index.php';
     axios.get(url).then((response) => response.data)
         .then((data) => {
           this.setState({wmpq_streams: data}, ()=> {

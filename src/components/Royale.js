@@ -1,5 +1,5 @@
 import React from 'react';
-import Papa from 'papaparse';
+import axios from 'axios';
 import * as TwitchAPI from './TwitchAPI';
 import FeatStream from './FeatStream';
 import csvFile from '../data/royale.csv';
@@ -33,25 +33,6 @@ class Royale extends React.Component {
       height: 400,
       channel: user,
       theme: 'dark',
-    });
-  }
-
-  /**
-  * read csv
-  */
-  readCsv() {
-    Papa.parse(csvFile, {
-      download: true,
-      header: true,
-      skipEmptyLines: true,
-      complete: (results) => {
-        this.setState(
-            {royale_streams: results.data},
-            () => {
-              this.getStreamerDetails();
-            }
-        );
-      },
     });
   }
 
@@ -109,7 +90,13 @@ class Royale extends React.Component {
   * Run methods once component has mounted
   */
   componentDidMount() {
-    this.readCsv();
+    const url = '/api/royale/index.php';
+    axios.get(url).then((response) => response.data)
+        .then((data) => {
+          this.setState({royal_streams: data}, ()=> {
+            this.getStreamerDetails();
+          });
+        });
     setTimeout(this.refreshPage, 60*60*1000);
   }
 

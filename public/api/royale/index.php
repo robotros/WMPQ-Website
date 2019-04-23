@@ -19,7 +19,7 @@ if (!$con) {
 switch ($method) {
     case 'GET':
       $id = $_GET;
-      $sql = "select * from streamers";
+      $sql = "select * from royale";
       break;
 }
 
