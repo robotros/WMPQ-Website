@@ -89,8 +89,9 @@ class Royale extends React.Component {
   * Run methods once component has mounted
   */
   componentDidMount() {
-    // const url = '/api/royale/index.php';
-    const url = 'http://localhost:80/api/royale/index.php';
+    const url = '/api/royale/index.php';
+    // const url = 'http://localhost:80/api/royale/index.php';
+    // const url = 'http://localhost:8080/api/royale/index.php';
     axios.get(url).then((response) => response.data)
         .then((data) => {
           this.setState({royale_streams: data}, ()=> {
