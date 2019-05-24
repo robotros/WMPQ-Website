@@ -92,7 +92,8 @@ class Home extends React.Component {
   * Run methods once component has mounted
   */
   componentDidMount() {
-    const url = '/api/streamers/index.php';
+    const url = 'http://localhost:80/api/streamers/index.php';
+    // const url = '/api/streamers/index.php';
     axios.get(url).then((response) => response.data)
         .then((data) => {
           this.setState({wmpq_streams: data}, ()=> {
