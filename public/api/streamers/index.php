@@ -5,10 +5,10 @@ $password = "Zi_9iQfJ(~v*";
 $dbname = "robotros_wmpq";
 $id = '';
 
+header("Access-Control-Allow-Origin: *");
 $con = mysqli_connect($host, $user, $password,$dbname);
 
 $method = $_SERVER['REQUEST_METHOD'];
-$request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
 
 
 if (!$con) {
