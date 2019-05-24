@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import * as TwitchAPI from './TwitchAPI';
 import FeatStream from './FeatStream';
-import csvFile from '../data/wmpq.csv';
 
 // setup Twitch
 const Twitch = window.Twitch;
