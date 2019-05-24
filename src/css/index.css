@@ -65,3 +65,7 @@ padding-top: 0;
 .img-charity{
   max-height: 100px;
 }
+
+.navbar-dark .navbar-nav .nav-link{
+  color: #CCCCCC;
+}
