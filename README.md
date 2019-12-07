@@ -1,6 +1,6 @@
 # WMPQ-Website
 
-This is the website for WMPQ Gaming 
+This is the website for WMPQ Gaming
 
 The functionality of the application is as follows.
 1. a featured stream from [twitch](https://twitch.tv).
@@ -23,24 +23,27 @@ The following will be required to build and run this program
 3. Twitch [API Key](https://dev.twitch.tv)
 4. the follwing packages
 ```xml
-    "react-scripts": "1.1.4",
-    "react-social-icons": "^4.1.0"
-    "@fortawesome/fontawesome-svg-core": "^1.2.17",
-    "@fortawesome/free-solid-svg-icons": "^5.8.1",
+    "@fortawesome/fontawesome-svg-core": "^1.2.19",
+    "@fortawesome/free-solid-svg-icons": "^5.9.0",
     "@fortawesome/react-fontawesome": "^0.1.4",
+    "acorn": "^6.1.1",
     "ajv": "^6.10.0",
+    "axios": "^0.19.0",
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.15.3",
+    "eslint": "^5.16.0",
     "eslint-config-google": "^0.10.0",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.13.0",
+    "fstream": "^1.0.12",
     "install": "^0.12.2",
     "npm": "^6.9.0",
     "papaparse": "^4.6.3",
     "prop-types": "^15.7.2",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
-    "react-router-dom": "^4.3.1"
+    "qs": "^6.7.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^4.3.1",
+    "tar": "^4.4.10"
 ```
 
 ## Footnotes
@@ -53,5 +56,5 @@ The following will be required to build and run this program
 
 ## Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). 
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 You can find more information on how to perform common tasks [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
