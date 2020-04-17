@@ -3,7 +3,7 @@
 * Main component to render WMPQ Gaming Webpage
 *
 * Author:[Aron Roberts](github.com/robotros)
-* Last Update: 02/04/2019
+* Last Update: 04/17/2020
 */
 import React from 'react';
 import {Route} from 'react-router-dom';
@@ -16,7 +16,7 @@ import Home from './components/Home';
 import Charity from './components/Charity';
 import Store from './components/Store';
 import About from './components/About';
-import Royale from './components/Royale';
+// import Royale from './components/Royale';
 import WMPQLive from './components/WMPQLive';
 import './css/app.css';
 // import Contact from './components/Contact';
@@ -57,11 +57,11 @@ class WMPQApp extends React.Component {
         'label': 'Live',
         'component': WMPQLive,
       },
-      {
-        'path': '/royale',
-        'label': 'Royale',
-        'component': Royale,
-      },
+      // {
+      //   'path': '/royale',
+      //   'label': 'Royale',
+      //   'component': Royale,
+      // },
     ],
     social: [
       {'url': 'https://www.facebook.com/wmpqgaming'},

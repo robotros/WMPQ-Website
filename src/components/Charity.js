@@ -19,18 +19,6 @@ class Charity extends Component {
         'details': 'Support a classroom. Build a future.Teachers and students all over the U.S. need your help to bring their classroom dreams to life. Get crayons, books, telescopes, field trips, and more for a classroom today',
         'image': 'https://cdn.donorschoose.net/images/logo/dc-logo.png',
       },
-      {
-        'name': 'Video Game Voters Network',
-        'url': 'https://videogamevoters.org/',
-        'details': 'For nearly 10 years, the Video Game Voters Network (VGVN) has been a place for American gamers to organize and defend against threats to video games. We know that without a critical mass of adult video gamers who are registered to vote and willing to stand firmly behind the games they love, politicians will continue to fire criticism at video games and gamers in order to score easy points for their political campaigns.',
-        'image': 'https://videogamevoters.org/assets/images/logo.png',
-      },
-      {
-        'name': 'Make Chester Proud',
-        'url': 'https://www.makechesterproud.com/',
-        'details': 'Our personal mission is to provide emotional support and peer education to those in crisis and those impacted by them with the goal of reducing suicide, self-destructive behaviors and ending the stigma surrounding mental health.',
-        'image': 'https://static.elmundo.sv/wp-content/uploads/2017/07/Chester-Bennington.png',
-      },
     ],
   }
   /**
