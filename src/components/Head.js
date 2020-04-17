@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import logo from '../img/WMPQ-gaming-logo-03_brand.png';
+import Login from './Login';
 import NavLinks from './NavLinks';
 import PropTypes from 'prop-types';
 
@@ -18,7 +18,13 @@ class Head extends Component {
         <nav className='navbar navbar-expand-lg navbar-dark bg-dark fixed-top'>
           <div className='container'>
             <div className='navbar-brand'>
-              <img src={logo} alt='WMPQ'></img>
+              <img src={this.props.logo}
+                alt='Logo'
+                className='logo'>
+              </img>
+              <strong className='title'> {this.props.site}</strong> <br></br>
+              {this.props.credentials.username !== '' ?
+                ' Welcome, '+this.props.credentials.username :''}
             </div>
             <button className='navbar-toggler'
               type='button'
@@ -36,6 +42,13 @@ class Head extends Component {
                     key={L.path}
                     L={L}
                   />)}
+                <li className='nav-item'>
+                  <Login
+                    credentials= {this.props.credentials}
+                    login = {this.props.login}
+                    logout = {this.props.logout}
+                  />
+                </li>
               </ul>
             </div>
           </div>
@@ -47,6 +60,11 @@ class Head extends Component {
 
 Head.propTypes = {
   Nav: PropTypes.array.isRequired,
+  credentials: PropTypes.object.isRequired,
+  login: PropTypes.func,
+  logout: PropTypes.func,
+  logo: PropTypes.string.isRequired,
+  site: PropTypes.string.isRequired,
 };
 
 export default Head;

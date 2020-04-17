@@ -1,3 +1,8 @@
+/* eslint no-console: ["error", { allow: ["warn", "error"] }] */
+/* eslint no-invalid-this: "warn" */
+/* eslint max-len: "warn" */
+
+
 /**
 * filename: App.js
 * Main component to render WMPQ Gaming Webpage
@@ -20,6 +25,7 @@ import About from './components/About';
 import WMPQLive from './components/WMPQLive';
 import './css/app.css';
 // import Contact from './components/Contact';
+import Logo from './img/WMPQ-gaming-logo-03_brand.png';
 
 
 // font awesome icon library
@@ -31,6 +37,8 @@ library.add(faCopyright, faFlagUsa);
 */
 class WMPQApp extends React.Component {
   state = {
+    company: 'WMPQ Gaming',
+    site: '',
     Nav: [
       {
         'path': '/',
@@ -70,7 +78,39 @@ class WMPQApp extends React.Component {
       {'url': 'https://discord.gg/SDpxpVh'},
       // {'url': 'emailto:robotros@wmpq.org'},
     ],
+    credentials:
+    {
+      username: '',
+      password: '',
+    },
   }
+
+  /**
+  * Make API call to get User information
+  * @param {HTMLElement} event login form
+  */
+  login = async (event) =>{
+    event.preventDefault();
+    let user = event.target[0].value;
+    let pass = event.target[1].value;
+    let test = false;
+
+   test ?
+    await this.setState({credentials: {username: user.toUpperCase(),
+      password: pass}}, document.getElementById('closeLogin').click()) :
+    console.error('Authenticaion Failed');
+  };
+
+  /**
+  * SetState credentials to ''
+  * @param {HTMLElement} event logout button
+  */
+  logout = async (event) => {
+    event.preventDefault();
+    await this.setState({credentials: {username: '', password: ''}});
+    console.warn('user logged out');
+  }
+
 
   /**
   * Render Component into html
@@ -79,7 +119,14 @@ class WMPQApp extends React.Component {
   render() {
     return (
       <main className='app'>
-        <Head Nav={this.state.Nav}/>
+        <Head
+          site={this.state.site}
+          logo={Logo}
+          Nav={this.state.Nav}
+          credentials = {this.state.credentials}
+          login={this.login}
+          logout={this.logout}
+        />
         <div className='center'>
           {this.state.Nav.map((page) =>
             <Route
