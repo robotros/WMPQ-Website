@@ -27,7 +27,8 @@ class Foot extends Component {
             </div>
             <div className='col-md-6'>
               <p className='m-0 text-center text-white'>
-                 Copyright <FontAwesomeIcon icon='copyright' /> 2019 WMPQ Gaming
+                 Copyright <FontAwesomeIcon icon='copyright' />
+                {new Date().getFullYear()} {this.props.company}
               </p>
             </div>
           </div>
@@ -39,6 +40,7 @@ class Foot extends Component {
 
 Foot.propTypes = {
   social: PropTypes.array.isRequired,
+  company: PropTypes.string.isRequired,
 };
 
 export default Foot;

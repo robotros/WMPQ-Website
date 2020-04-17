@@ -136,7 +136,10 @@ class WMPQApp extends React.Component {
             />
           )}
         </div>
-        <Foot social={this.state.social}/>
+        <Foot
+          social={this.state.social}
+          company = {this.state.company}
+        />
       </main>
     );
   }
