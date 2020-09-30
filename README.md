@@ -8,20 +8,21 @@ The functionality of the application is as follows.
 3. display offline or Live-Thumbnail for suggested streams
 4. using routing to create multiple pages
 
-## QuickStart
+## Quick and sharp start
 
 * the following quick start can be used if you have nodeJS
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
 
-## Dependencies
+## dependencies
 
 The following will be required to build and run this program
 
 1. a compatible web browser
 2. nodeJS
 3. Twitch [API Key](https://dev.twitch.tv)
-4. the follwing packages
+4. java script
+5. the follwing packages
 ```xml
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
