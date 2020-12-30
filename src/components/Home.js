@@ -73,6 +73,10 @@ class Home extends React.Component {
   * Make TwitchAPI call to get streamer information
   */
   async getStreamerDetails() {
+    await TwitchAPI.getToken().
+      then( (data) => {
+        console.warn(data);
+      })
     await TwitchAPI.getChannels(this.state.wmpq_streams)
         .then( (data) => {
           this.setState({streamer_details: data.data}, this.getLiveStreams);
@@ -96,9 +100,9 @@ class Home extends React.Component {
     // API URL for work laptop
     // const url = 'http://localhost:8080/api/streamers/index.php';
     // API URL for home ENV
-    // const url = 'http://localhost:80/api/streamers/index.php';
+     const url = 'http://localhost:80/api/streamers/index.php';
     // API URL for live ENV
-    const url = '/api/streamers/index.php';
+    // const url = '/api/streamers/index.php';
     axios.get(url).then((response) => response.data)
         .then((data) => {
           this.setState({wmpq_streams: data}, ()=> {

@@ -6,19 +6,70 @@ import axios from 'axios';
 import qs from 'qs';
 
 // API Endpoint URL
+const oauthURL = 'https://id.twitch.tv/oauth2/';
 const api = 'https://api.twitch.tv/helix/';
 
 // Unique Client-ID obtained at https://twitch.tv
 const client = '1qdqw5gt896kmm2mqngp3mepzxod1e';
 
+// twitch Oauth Request
+const authRequest = axios.create({
+  baseURL: oauthURL,
+  paramsSerializer: (params) => qs.stringify(params, {arrayFormat: 'repeat'}),
+  headers: {
+    // 'client-id': client,
+  },
+});
 
+// twitch API Request
 const twitchRequest = axios.create({
   baseURL: api,
   paramsSerializer: (params) => qs.stringify(params, {arrayFormat: 'repeat'}),
   headers: {
-    'client-id': client,
+    // 'client-id': client,
   },
 });
+
+
+/*
+* Returns OAuth Token
+*/
+export const getToken = () => {
+  let request = {
+    params: {
+      client_id: client,
+      redirect_uri: 'https://www.wmpq.org',
+      response_type: 'token',
+    },
+  };
+  return authRequest.get('authorize', request)
+      .then((response)=>{
+        return response.data;
+      }).catch((error)=>{
+        console.error('error occured connecting to Twitch OAuth');
+      });
+};
+
+
+/*
+* Checks if Token is Valid
+*/
+export const validateToken = (token) => {
+
+  authRequest.defaults.headers.common['Authorization'] = 'Bearer '+token;
+
+  let request = {
+    params: {
+    },
+  };
+  return authRequest.get('validate', request)
+      .then((response)=>{
+        return response.data;
+      }).catch((error)=>{
+        console.error('error occured connecting to Twitch OAuth');
+      });
+};
+
 
 
 /*
