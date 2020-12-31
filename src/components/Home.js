@@ -131,9 +131,10 @@ class Home extends React.Component {
     await this.validateTokens();
     await this.getNewToken();
     // API URL for DEV ENV
-    const url = env.REACT_APP_DEV_API;
+    // const url = env.REACT_DEV_API_URL;
     // API URL for PRD ENV
-    // const url = env.REACT_APP_PRD_API;
+    console.log(env.REACT_PRD_API_URL);
+    const url = env.REACT_PRD_API_URL;
     axios.get(url).then((response) => response.data)
         .then((data) => {
           this.setState({wmpq_streams: data}, ()=> {

@@ -11,8 +11,8 @@ const oauthURL = 'https://id.twitch.tv/oauth2/';
 const api = 'https://api.twitch.tv/helix/';
 
 // Unique Client-ID obtained at https://twitch.tv
-const client = '1qdqw5gt896kmm2mqngp3mepzxod1e';
-const secret = env.REACT_APP_TSECRET;
+const client = env.REACT_APP_TWITCH_CLIENT;
+const secret = env.REACT_APP_TWITCH_SECRET;
 
 // twitch Oauth Request
 const authRequest = axios.create({
