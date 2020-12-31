@@ -79,3 +79,4 @@ public/env.js
 
 # API keys
 src/components/API_CLIENT_ID.js
+public/env.js
