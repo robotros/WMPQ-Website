@@ -12,7 +12,7 @@ const api = 'https://api.twitch.tv/helix/';
 
 // Unique Client-ID obtained at https://twitch.tv
 const client = '1qdqw5gt896kmm2mqngp3mepzxod1e';
-const secret = env.REACT_APP_TSECRET; // '8511n33xw78w0er0ibx3mua7f6pwrf'
+const secret = env.REACT_APP_TSECRET;
 
 // twitch Oauth Request
 const authRequest = axios.create({
