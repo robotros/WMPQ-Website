@@ -16,7 +16,6 @@
     "ajv": "^6.12.6",
     "axios": "^0.19.2",
     "babel-eslint": "^7.2.3",
-    "dotenv": "^8.2.0",
     "eslint": "^4.19.1",
     "eslint-config-google": "^0.10.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
@@ -38,9 +37,9 @@
     "react-social-icons": "^4.1.0"
   },
   "scripts": {
-    "start": "react-dotenv && react-scripts start",
-    "build": "react-dotenv && react-scripts build",
-    "serve": "react-dotenv && serve build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "serve": "serve build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
