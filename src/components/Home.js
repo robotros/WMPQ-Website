@@ -6,6 +6,7 @@ import offline from '../img/offline.png';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 // import {withCookies, Cookies} from 'react-cookie';
+import env from 'react-dotenv';
 
 // setup Twitch
 const Twitch = window.Twitch;
@@ -129,12 +130,10 @@ class Home extends React.Component {
     // get Twitch API access Token
     await this.validateTokens();
     await this.getNewToken();
-    // API URL for work laptop
-    // const url = 'http://localhost:8080/api/streamers/index.php';
-    // API URL for home ENV
-     const url = 'http://localhost:80/api/streamers/index.php';
-    // API URL for live ENV
-    // const url = '/api/streamers/index.php';
+    // API URL for DEV ENV
+    const url = env.REACT_APP_DEV_API;
+    // API URL for PRD ENV
+    // const url = env.REACT_APP_PRD_API;
     axios.get(url).then((response) => response.data)
         .then((data) => {
           this.setState({wmpq_streams: data}, ()=> {
