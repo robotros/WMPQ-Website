@@ -27,9 +27,9 @@ import './css/app.css';
 // import Contact from './components/Contact';
 import Logo from './img/WMPQ-gaming-logo-03_brand.png';
 
-
 // font awesome icon library
 library.add(faCopyright, faFlagUsa);
+
 
 /**
 * React Component to Render WMPQ.org Website
@@ -60,16 +60,16 @@ class WMPQApp extends React.Component {
         'label': 'Store',
         'component': Store,
       },
-      {
+      /*{
         'path': '/wmpqlive',
         'label': 'Live',
         'component': WMPQLive,
       },
-      // {
-      //   'path': '/royale',
-      //   'label': 'Royale',
-      //   'component': Royale,
-      // },
+      {
+         'path': '/royale',
+         'label': 'Royale',
+         'component': Royale,
+       },*/
     ],
     social: [
       {'url': 'https://www.facebook.com/wmpqgaming'},

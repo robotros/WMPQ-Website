@@ -4,9 +4,12 @@ import Featured from './Featured';
 import OtherStreams from './OtherStreams';
 import offline from '../img/offline.png';
 import axios from 'axios';
+import Cookies from 'universal-cookie';
+// import {withCookies, Cookies} from 'react-cookie';
 
 // setup Twitch
 const Twitch = window.Twitch;
+const cookies = new Cookies();
 
 /**
 * React Component to Render WMPQ.org home page
@@ -14,6 +17,8 @@ const Twitch = window.Twitch;
 */
 class Home extends React.Component {
   state = {
+    twitch_token: '',
+    token_valid: false,
     wmpq_streams: [],
     streamer_details: [],
     live_streams: [],
@@ -73,11 +78,7 @@ class Home extends React.Component {
   * Make TwitchAPI call to get streamer information
   */
   async getStreamerDetails() {
-    await TwitchAPI.getToken().
-      then( (data) => {
-        console.warn(data);
-      })
-    await TwitchAPI.getChannels(this.state.wmpq_streams)
+    await TwitchAPI.getChannels(this.state.wmpq_streams, this.state.twitch_token)
         .then( (data) => {
           this.setState({streamer_details: data.data}, this.getLiveStreams);
         });
@@ -94,9 +95,40 @@ class Home extends React.Component {
   }
 
   /**
+  * Check Token
+  */
+  async validateTokens() {
+    await TwitchAPI.validateToken(this.state.twitch_token).then(
+        async (data) => {
+          data.expires_in ?
+            data.expires_in > 0 ?
+              await this.setState({token_valid: true}) :
+              await this.setState({token_valid: false}) :
+              await this.setState({token_valid: false});
+        });
+    console.warn(this.state.token_valid);
+  }
+
+  /**
+  * Get new Token
+  */
+  async getNewToken() {
+    this.state.token_valid ? console.warn('token valid') :
+    await TwitchAPI.getToken().then((data) => {
+      this.setState({twitch_token: data.access_token});
+      cookies.set('Ttoken', data.access_token, {path: '/'});
+    });
+  }
+
+
+  /**
   * Run methods once component has mounted
   */
-  componentDidMount() {
+  async componentDidMount() {
+    await this.setState({twitch_token: cookies.get('Ttoken')});
+    // get Twitch API access Token
+    await this.validateTokens();
+    await this.getNewToken();
     // API URL for work laptop
     // const url = 'http://localhost:8080/api/streamers/index.php';
     // API URL for home ENV

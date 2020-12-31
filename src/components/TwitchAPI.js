@@ -4,6 +4,7 @@
 */
 import axios from 'axios';
 import qs from 'qs';
+import env from 'react-dotenv';
 
 // API Endpoint URL
 const oauthURL = 'https://id.twitch.tv/oauth2/';
@@ -11,14 +12,11 @@ const api = 'https://api.twitch.tv/helix/';
 
 // Unique Client-ID obtained at https://twitch.tv
 const client = '1qdqw5gt896kmm2mqngp3mepzxod1e';
+const secret = env.REACT_APP_TSECRET; // '8511n33xw78w0er0ibx3mua7f6pwrf'
 
 // twitch Oauth Request
 const authRequest = axios.create({
   baseURL: oauthURL,
-  paramsSerializer: (params) => qs.stringify(params, {arrayFormat: 'repeat'}),
-  headers: {
-    // 'client-id': client,
-  },
 });
 
 // twitch API Request
@@ -26,10 +24,9 @@ const twitchRequest = axios.create({
   baseURL: api,
   paramsSerializer: (params) => qs.stringify(params, {arrayFormat: 'repeat'}),
   headers: {
-    // 'client-id': client,
+    'client-id': client,
   },
 });
-
 
 /*
 * Returns OAuth Token
@@ -38,24 +35,22 @@ export const getToken = () => {
   let request = {
     params: {
       client_id: client,
-      redirect_uri: 'https://www.wmpq.org',
-      response_type: 'token',
+      client_secret: secret,
+      grant_type: 'client_credentials',
     },
   };
-  return authRequest.get('authorize', request)
+  return authRequest.post('token', qs.stringify(request.params))
       .then((response)=>{
         return response.data;
       }).catch((error)=>{
-        console.error('error occured connecting to Twitch OAuth');
+        console.error('Error connecting to Twitch OAuth \n' + error);
       });
 };
-
 
 /*
 * Checks if Token is Valid
 */
 export const validateToken = (token) => {
-
   authRequest.defaults.headers.common['Authorization'] = 'Bearer '+token;
 
   let request = {
@@ -66,16 +61,15 @@ export const validateToken = (token) => {
       .then((response)=>{
         return response.data;
       }).catch((error)=>{
-        console.error('error occured connecting to Twitch OAuth');
+        return error;
       });
 };
-
-
 
 /*
 * Returns channel information for a list of channels
 */
-export const getChannels = (list) => {
+export const getChannels = (list, token) => {
+  twitchRequest.defaults.headers.common['Authorization'] = 'Bearer '+token;
   let query=[];
   list.forEach((name, i, arr) => {
     query.push(name.channel);
@@ -93,7 +87,6 @@ export const getChannels = (list) => {
         console.error('error occured connecting to twitchRequest');
       });
 };
-
 
 /*
 * Returns Details of live streams from list
