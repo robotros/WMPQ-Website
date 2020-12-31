@@ -43,11 +43,17 @@
   "scripts": {
     "start": "react-dotenv && react-scripts start",
     "build": "react-dotenv && react-scripts build",
+    "serve": "react-dotenv && serve build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
     "react-dotenv": {
-    "whitelist": ["REACT_APP_TSECRET"]
+    "whitelist": [
+      "REACT_APP_TWITCH_SECRET",
+      "REACT_APP_TWITCH_CLIENT",
+      "REACT_APP_PRD_API",
+      "REACT_APP_DEV_API"
+    ]
   },
   "license": "MIT"
 }
