@@ -5,8 +5,9 @@ import OtherStreams from './OtherStreams';
 import offline from '../img/offline.png';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
+import * as env from '../env.js';
 // import {withCookies, Cookies} from 'react-cookie';
-import env from 'react-dotenv';
+// import env from 'react-dotenv';
 
 // setup Twitch
 const Twitch = window.Twitch;
@@ -133,8 +134,7 @@ class Home extends React.Component {
     // API URL for DEV ENV
     // const url = env.REACT_DEV_API_URL;
     // API URL for PRD ENV
-    console.log(env.REACT_PRD_API_URL);
-    const url = env.REACT_PRD_API_URL;
+    const url = env.PRD.REACT_WMPQ_API_URL;
     axios.get(url).then((response) => response.data)
         .then((data) => {
           this.setState({wmpq_streams: data}, ()=> {

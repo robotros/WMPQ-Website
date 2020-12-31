@@ -29,7 +29,6 @@
     "qs": "^6.9.4",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-dotenv": "^0.1.3",
     "react-router-dom": "^4.3.1",
     "tar": "^4.4.10",
     "universal-cookie": "^4.0.4"
@@ -44,14 +43,6 @@
     "serve": "react-dotenv && serve build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-    "react-dotenv": {
-    "whitelist": [
-      "REACT_APP_TWITCH_SECRET",
-      "REACT_APP_TWITCH_CLIENT",
-      "REACT_PRD_API_URL",
-      "REACT_DEV_API_URL"
-    ]
   },
   "license": "MIT"
 }

@@ -4,15 +4,16 @@
 */
 import axios from 'axios';
 import qs from 'qs';
-import env from 'react-dotenv';
+import * as env from '../env.js';
+// import env from 'react-dotenv';
 
 // API Endpoint URL
 const oauthURL = 'https://id.twitch.tv/oauth2/';
 const api = 'https://api.twitch.tv/helix/';
 
 // Unique Client-ID obtained at https://twitch.tv
-const client = env.REACT_APP_TWITCH_CLIENT;
-const secret = env.REACT_APP_TWITCH_SECRET;
+const client = env.PRD.TWITCH_CLIENT;
+const secret = env.PRD.TWITCH_SECRET;
 
 // twitch Oauth Request
 const authRequest = axios.create({

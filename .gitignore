@@ -59,6 +59,8 @@ typings/
 .env
 env.js
 public/env.js
+src/.env
+src/env.js
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
