@@ -51,8 +51,8 @@
     "whitelist": [
       "REACT_APP_TWITCH_SECRET",
       "REACT_APP_TWITCH_CLIENT",
-      "REACT_APP_PRD_API",
-      "REACT_APP_DEV_API"
+      "REACT_PRD_API_URL",
+      "REACT_DEV_API_URL"
     ]
   },
   "license": "MIT"
