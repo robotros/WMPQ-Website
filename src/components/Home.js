@@ -1,3 +1,6 @@
+/* eslint no-console: ["error", { allow: ["warn", "error"] }] */
+/* eslint no-console: ["warn", { allow: ["warn", "error"] }] */
+
 import React from 'react';
 import * as TwitchAPI from './TwitchAPI';
 import Featured from './Featured';
@@ -131,10 +134,8 @@ class Home extends React.Component {
     // get Twitch API access Token
     await this.validateTokens();
     await this.getNewToken();
-    // API URL for DEV ENV
-    // const url = env.REACT_DEV_API_URL;
-    // API URL for PRD ENV
-    const url = env.PRD.REACT_WMPQ_API_URL;
+    // use env.DEV.WMPQ_API_URL for localhost
+    const url = env.PRD.WMPQ_API_URL;
     axios.get(url).then((response) => response.data)
         .then((data) => {
           this.setState({wmpq_streams: data}, ()=> {
