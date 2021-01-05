@@ -14,7 +14,7 @@
     "@fortawesome/react-fontawesome": "^0.1.14",
     "acorn": "^6.4.2",
     "ajv": "^6.12.6",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "babel-eslint": "^7.2.3",
     "eslint": "^4.19.1",
     "eslint-config-google": "^0.10.0",

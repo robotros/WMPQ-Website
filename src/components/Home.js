@@ -9,12 +9,13 @@ import offline from '../img/offline.png';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import * as env from '../env.js';
-// import {withCookies, Cookies} from 'react-cookie';
-// import env from 'react-dotenv';
 
 // setup Twitch
 const Twitch = window.Twitch;
 const cookies = new Cookies();
+// use env.DEV.WMPQ_API_URL for localhost
+// use env.PRD.WMPQ_API_URL for PRD env
+const API_URL = env.DEV.WMPQ_API_URL;
 
 /**
 * React Component to Render WMPQ.org home page
@@ -111,37 +112,50 @@ class Home extends React.Component {
               await this.setState({token_valid: false}) :
               await this.setState({token_valid: false});
         });
-    console.warn(this.state.token_valid);
   }
 
   /**
   * Get new Token
   */
   async getNewToken() {
-    this.state.token_valid ? console.warn('token valid') :
     await TwitchAPI.getToken().then((data) => {
       this.setState({twitch_token: data.access_token});
-      cookies.set('Ttoken', data.access_token, {path: '/'});
+      cookies.set('twitch_token', data.access_token, {path: '/'});
     });
+  }
+
+  /**
+  * get wmpq info
+  */
+  async getWMPQUsers() {
+    await axios.get(API_URL).then((response) => response.data)
+        .then((data) => {
+          this.setState({wmpq_streams: data});
+        });
+  }
+
+  /**
+  * build main content
+  */
+  async main() {
+    // retrieve twitch token from stored cookie
+    await this.setState({twitch_token: cookies.get('twitch_token')});
+    // get Twitch API access Token
+    await this.validateTokens();
+    if (this.state.token_valid !== true) {
+      console.warn('getting new token for Twitch');
+      await this.getNewToken();
+    }
+    await this.getWMPQUsers();
+    this.getStreamerDetails();
   }
 
 
   /**
   * Run methods once component has mounted
   */
-  async componentDidMount() {
-    await this.setState({twitch_token: cookies.get('Ttoken')});
-    // get Twitch API access Token
-    await this.validateTokens();
-    await this.getNewToken();
-    // use env.DEV.WMPQ_API_URL for localhost
-    const url = env.PRD.WMPQ_API_URL;
-    axios.get(url).then((response) => response.data)
-        .then((data) => {
-          this.setState({wmpq_streams: data}, ()=> {
-            this.getStreamerDetails();
-          });
-        });
+  componentDidMount() {
+    this.main();
   }
 
   /**
