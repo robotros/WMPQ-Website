@@ -9,6 +9,7 @@ import offline from '../img/offline.png';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import * as env from '../env.js';
+import CryptoJS from 'crypto-js';
 
 // setup Twitch
 const Twitch = window.Twitch;
@@ -16,6 +17,7 @@ const cookies = new Cookies();
 // use env.DEV.WMPQ_API_URL for localhost
 // use env.PRD.WMPQ_API_URL for PRD env
 const API_URL = env.DEV.WMPQ_API_URL;
+const SECRET = env.PRD.SECRET;
 
 /**
 * React Component to Render WMPQ.org home page
@@ -98,7 +100,6 @@ class Home extends React.Component {
     await TwitchAPI.getLive(this.state.streamer_details)
         .then(async (data) => {
           await this.setState({live_streams: data.data});
-          console.warn(this.state.live_streams);
         });
   }
 
@@ -122,7 +123,9 @@ class Home extends React.Component {
   async getNewToken() {
     await TwitchAPI.getToken().then((data) => {
       this.setState({twitch_token: data.access_token});
-      cookies.set('twitch_token', data.access_token, {path: '/'});
+      let encryptedToken = CryptoJS.AES.encrypt(data.access_token, SECRET)
+          .toString();
+      cookies.set('twitch_token', encryptedToken, {path: '/'});
     });
   }
 
@@ -135,13 +138,23 @@ class Home extends React.Component {
           this.setState({wmpq_streams: data});
         });
   }
+  /**
+  * test
+  */
+  async getCookies() {
+    let encryptedToken = cookies.get('twitch_token');
+    let tokenByte = CryptoJS.AES.decrypt(encryptedToken, SECRET);
+    let decryptedToken= tokenByte.toString(CryptoJS.enc.Utf8);
+    await this.setState({twitch_token: decryptedToken});
+  }
 
   /**
   * build main content
   */
   async main() {
     // retrieve twitch token from stored cookie
-    await this.setState({twitch_token: cookies.get('twitch_token')});
+
+    await this.getCookies();
     // get Twitch API access Token
     await this.validateTokens();
     if (this.state.token_valid !== true) {

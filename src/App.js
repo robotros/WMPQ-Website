@@ -22,7 +22,7 @@ import Charity from './components/Charity';
 import Store from './components/Store';
 import About from './components/About';
 // import Royale from './components/Royale';
-import WMPQLive from './components/WMPQLive';
+// import WMPQLive from './components/WMPQLive';
 import './css/app.css';
 // import Contact from './components/Contact';
 import Logo from './img/WMPQ-gaming-logo-03_brand.png';

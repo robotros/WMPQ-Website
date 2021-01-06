@@ -16,6 +16,7 @@
     "ajv": "^6.12.6",
     "axios": "^0.21.1",
     "babel-eslint": "^7.2.3",
+    "crypto-js": "^4.0.0",
     "eslint": "^4.19.1",
     "eslint-config-google": "^0.10.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
