@@ -13,13 +13,10 @@ class About extends Component {
   render() {
     return (
       <div className='About container'>
-        <h1>About <span className='text-danger'>W</span>
+        <h1 className='text-center'>About <span className='text-danger'>W</span>
           M<span className='text-danger'>P</span>Q Gaming</h1>
-        <img src={controller} className='img-fluid img-responsive center-align' alt='WMPQ'></img>
+        <img src={controller} className='img-fluid img-responsive center-align rounded mx-auto d-block' alt='WMPQ'></img>
         <hr></hr>
-        <p>WMPQ Gaming is an organization for gamers founded in 2007.<br></br>
-          WMPQ Gaming is focused on providing a positive enviroment for people.
-          We encourage our members to incorperate our key values in all aspects of life, both in and out of game.</p>
         <h2><span className='text-danger'>W</span><small>illpower</small></h2>
         <p>Willpower is nothing but a choice.
           A choice to keep trying regardless of the odds.

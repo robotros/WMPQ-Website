@@ -12,17 +12,16 @@ class Cause extends Component {
   */
   render() {
     return (
-      <div>
-        <h2>{this.props.C.name}</h2>
+      <div className='col-md-5 charitable-cause border rounded border-primary"' >
         <a href={this.props.C.url}>
           <img className='img-fluid img-charity'
             src={this.props.C.image}
             alt={this.props.C.name}>
           </img>
         </a>
-        <br></br><br></br>
-        <p>{this.props.C.details}</p>
         <hr></hr>
+        <h2>{this.props.C.name}</h2>
+        <p>{this.props.C.details}</p>
       </div>
     );
   }

@@ -12,7 +12,7 @@ class FeatStream extends Component {
   */
   render() {
     return (
-      <div className='col-md-10 content' id={this.props.id}></div>
+      <div className='col-md-8 content' id={this.props.id}></div>
     );
   }
 }

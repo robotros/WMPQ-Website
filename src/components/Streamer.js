@@ -34,7 +34,7 @@ class Streamer extends Component {
 Streamer.propTypes = {
   detail: PropTypes.object.isRequired,
   default_image: PropTypes.string.isRequired,
-  live: PropTypes.object.isRequired,
+  live: PropTypes.object,
 };
 
 export default Streamer;

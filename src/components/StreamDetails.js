@@ -15,14 +15,14 @@ class StreamDetails extends Component {
       {'display_name': 'none', 'description': 'no stream available'};
 
     return (
-      <div className='col-md-2 infor'>
-        <h2 className='my-3'>Streamer</h2>
-        <img className='feat image-responsive'
+      <div className='col-md-4 col-sm-6 infor'>
+        <h2 className='my-3 text-center'>About Streamer</h2>
+        <img className='feat image-responsive rounded mx-auto d-block'
           alt={info.display_name}
           height='20%'
           src={info.profile_image_url}></img>
         <hr></hr>
-        <p className='description'>{info.description.trim()}</p>
+        <p className='description text-justify'>{info.description.trim()}</p>
       </div>
     );
   }

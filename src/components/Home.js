@@ -52,12 +52,12 @@ class Home extends React.Component {
   /**
   * Select a random Live stream and embed it.
   */
-  setActiveStream() {
+  async setActiveStream() {
     let stream = this.state.default_stream;
     let live = this.state.live_streams;
     (live.length < 1) ? stream = this.state.default_stream :
       stream = live[Math.floor(Math.random() * live.length)].user_name;
-    this.setState({active_stream: stream}, this.setRelatedStreams);
+    await this.setState({active_stream: stream});
     this.embedTwitch(stream);
   }
 
@@ -84,9 +84,10 @@ class Home extends React.Component {
   * Make TwitchAPI call to get streamer information
   */
   async getStreamerDetails() {
-    await TwitchAPI.getChannels(this.state.wmpq_streams, this.state.twitch_token)
+    await TwitchAPI.getChannels(this.state.wmpq_streams,
+        this.state.twitch_token)
         .then( (data) => {
-          this.setState({streamer_details: data.data}, this.getLiveStreams);
+          this.setState({streamer_details: data.data});
         });
   }
 
@@ -96,7 +97,8 @@ class Home extends React.Component {
   async getLiveStreams() {
     await TwitchAPI.getLive(this.state.streamer_details)
         .then(async (data) => {
-          await this.setState({live_streams: data.data}, this.setActiveStream);
+          await this.setState({live_streams: data.data});
+          console.warn(this.state.live_streams);
         });
   }
 
@@ -147,9 +149,11 @@ class Home extends React.Component {
       await this.getNewToken();
     }
     await this.getWMPQUsers();
-    this.getStreamerDetails();
+    await this.getStreamerDetails();
+    await this.getLiveStreams();
+    this.setActiveStream();
+    this.setRelatedStreams();
   }
-
 
   /**
   * Run methods once component has mounted

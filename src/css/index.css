@@ -63,9 +63,14 @@ padding-top: 0;
 }
 
 .img-charity{
-  max-height: 100px;
+  max-height: 50px;
+  padding-top: 10px
 }
 
 .navbar-dark .navbar-nav .nav-link{
   color: #CCCCCC;
+}
+.charitable-cause{
+  margin: 5px;
+  margin-bottom: 20px;
 }
