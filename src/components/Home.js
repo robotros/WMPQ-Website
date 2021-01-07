@@ -143,7 +143,7 @@ class Home extends React.Component {
   */
   async getCookies() {
     let encryptedToken = cookies.get('twitch_token');
-    let tokenByte = CryptoJS.AES.decrypt(encryptedToken, SECRET);
+    let tokenByte = encryptedToken ? CryptoJS.AES.decrypt(encryptedToken, SECRET) : '';
     let decryptedToken= tokenByte.toString(CryptoJS.enc.Utf8);
     await this.setState({twitch_token: decryptedToken});
   }
