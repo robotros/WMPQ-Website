@@ -8,13 +8,13 @@ The functionality of the application is as follows.
 3. display offline or Live-Thumbnail for suggested streams
 4. using routing to create multiple pages
 
-## Quick and sharp start
+## Quickstart
 
 * the following quick start can be used if you have nodeJS
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
 
-## dependencies
+## Dependencies
 
 The following will be required to build and run this program
 
