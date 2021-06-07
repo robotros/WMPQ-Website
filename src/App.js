@@ -60,7 +60,7 @@ class WMPQApp extends React.Component {
         'label': 'Store',
         'component': Store,
       },
-      /*{
+      /* {
         'path': '/wmpqlive',
         'label': 'Live',
         'component': WMPQLive,
