@@ -48,6 +48,7 @@ class Home extends React.Component {
       channel: user,
       theme: 'dark',
       title: 'Twitch Stream',
+      parent: ['wmpq.org', 'www.wmpq.org'],
     });
   }
 
